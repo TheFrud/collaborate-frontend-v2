@@ -1,0 +1,28 @@
+<!-- Rad 1 -->
+<div class="row">
+  <div class="col-md-4">
+  <h2>Latest projects</h2>
+  <ul class="list-group">
+    <li ng-repeat="project in projects | orderBy: '-creationDate'" class="list-group-item">{{project.creationDate | date:'medium'}} - <strong><a ng-href="#/project/{{project.id}}">{{project.title}}</strong></a></li>
+  </ul>
+  </div>
+  <div class="col-md-4">
+  <h2>Popular projects</h2>
+  LOOP
+  </div>
+  <div class="col-md-4">
+  <h2>Featured projects</h2>
+  LOOP
+  </div>
+</div>
+<!-- Rad 2 -->
+<div class="row">
+  <div class="col-md-4">
+  <h2>Top collaborators</h2>
+  LOOP
+  </div>
+  <div class="col-md-4">
+  <h2>Latest assets</h2>
+  LOOP
+  </div>
+</div>
