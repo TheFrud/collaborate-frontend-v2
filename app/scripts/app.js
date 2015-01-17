@@ -22,7 +22,9 @@ var app = angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngTagsInput' 
+    'ngTagsInput',
+    'ngFx',
+    'textAngular' 
   ])
   .config(['$httpProvider', function($httpProvider) {
   // $httpProvider.defaults.withCredentials = true;
@@ -48,6 +50,15 @@ var app = angular
           }
         }
       })
+      .when('/myprojects', {
+        templateUrl: 'views/myprojects.html',
+        controller: 'MyprojectsCtrl',
+        resolve:{
+          authorize:function(session) {
+            return session.cookieExist();
+          }
+        }
+      })      
       .when('/project/:id', {
         templateUrl: 'views/projectview.html',
         controller: 'ProjectviewCtrl',
@@ -57,6 +68,15 @@ var app = angular
           }
         }        
       })
+      .when('/project/:id/admin', {
+        templateUrl: 'views/projectviewadmin.html',
+        controller: 'ProjectviewadminCtrl',
+        resolve:{
+          authorize:function(session) {
+            return session.cookieExist();
+          }
+        }        
+      })      
       .when('/profile', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',

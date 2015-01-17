@@ -1,0 +1,24 @@
+<h3>Edit Project</h3>
+<p>Denna del måste vara bra. Ska vara lätt att göra saker.</p>
+<p>Direct edit? </p>
+
+<form ng-submit="createAssetContainerFunc()" role="form">
+  <legend>Add Asset Container</legend>
+
+  <div class="form-group">
+    <label for="">Name</label>
+    <input ng-model="assetContainerName" type="text" class="form-control" id="" placeholder="Input field">
+    <label for="">Description</label>
+    <div text-angular ng-model="assetContainerDescription"></div>
+    <label for="">Category</label>
+    <select ng-init="projectAssetContainerCategory = assetContainerCategoryOptions[0]" ng-options="option for option in assetContainerCategoryOptions" ng-model="projectAssetContainerCategory" name="" id="input" class="form-control">
+
+	</select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h3>Contributions</h3>
+Loopa igenom asset containers, samt deras assets.<br>
+Markera assets som accepterade här?

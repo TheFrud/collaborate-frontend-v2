@@ -13,6 +13,25 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+.fa-plus-square{
+  font-size: 2em;
+  color: #591C61
+}
+
+.fa-spinner {
+  font-size: 2em;
+}
+
+.fa-user {
+  font-size: 20em;
+  color: #591C61
+}
+.fa-folder {
+  color: #591C61
+}
+.fa-star {
+  color: #FFD700
+}
 
 .btn {
     border-radius: 0px;

@@ -5,7 +5,7 @@
 		<label for="">Project Name</label>
 		<input ng-model="projectTitle" type="text" class="form-control" id="" placeholder="">
 		<label for="">Description</label>
-		<textarea ng-model="projectDescription" class="form-control" rows="5" placeholder=""></textarea>
+		<div text-angular ng-model="projectDescription"></div>
 		<label for="">Tags</label>
 	    <tags-input ng-model="projectTags"></tags-input>
 		<label for="">Collaboration Policy</label>
@@ -15,11 +15,14 @@
 		<br>File (Image) Upload
 	</div>
 
-	
-
 	<button type="submit" class="btn btn-primary">Create Project</button>
 </form>
 
 <!-- 		<option value="">Closed</option>
 			<option value="">Open</option>
+-->
+
+
+<!--
+<textarea ng-model="projectDescription" class="form-control" rows="5" placeholder="" id="projectDescriptionBox"></textarea>
 -->

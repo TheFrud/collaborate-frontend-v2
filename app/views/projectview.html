@@ -1,33 +1,26 @@
-<h3>Project: {{project.title}}</h3>
+<h3>{{project.title}}</h3>
 <i>Created: {{project.creationDate | date:'medium'}} </i><br>
 <i>
-<ul>
-<li ng-repeat="tag in project.tags">{{tag.text}} </li>
-</ul>
+<div style="display:inline-block" ng-repeat="tag in project.tags"><span class="label label-warning">{{tag.text}}</span><!-- For one empty space-->&nbsp;</div>
 </i>
 <p>Security: {{project.securityPolicy}}</p>
-<p>Description: {{project.description}}</p>
-
-<form ng-submit="createAssetContainerFunc()" role="form">
-  <legend>Add Asset Container</legend>
-
-  <div class="form-group">
-    <label for="">Name</label>
-    <input ng-model="assetContainerName" type="text" class="form-control" id="" placeholder="Input field">
-    <label for="">Description</label>
-    <input ng-model="assetContainerDescription" type="text" class="form-control" id="" placeholder="Input field">
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-
-
+<div class="well well-lg">
+<div ta-bind ng-model="project.description"></div>
+</div>
+<a href="#/project/{{project.id}}/admin">
+<div ng-show="isUserAdmin">
+<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Admin View
+</div>
+</a>
 
 <h4>Needed assets</h4>
 <div class="row">
   <div ng-repeat="assetContainer in project.assetContainers | filter : { status : 'needed' }" class="col-md-2">
+  <ul class="list-group">
+  	<li class="list-group-item">
   <a ng-href="#/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
+  	</li>
+  </ul>
   </div>
   <!--
 	<div class="media">
@@ -44,6 +37,11 @@
 
 <h4>Completed assets</h4>
 <div class="row">
-  <div ng-repeat="assetContainer in project.assetContainers | filter : { status : 'completed' }" class="col-md-2"><a ng-href="#/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
+  <div ng-repeat="assetContainer in project.assetContainers | filter : { status : 'completed' }" class="col-md-2">
+  <ul class="list-group">
+  	<li class="list-group-item">
+  <a ng-href="#/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
+  	</li>
+  </ul>
   </div>
 </div>

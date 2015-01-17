@@ -17,6 +17,7 @@ angular.module('collaborateApp')
 
     $scope.assetContainerId = $routeParams.id;
     $scope.assetContainerTitle = $routeParams.title;
+    $scope.addAssetForm = false;
 
     $scope.assetContainer = null;
 
@@ -30,7 +31,7 @@ angular.module('collaborateApp')
     $scope.project;
 
     $scope.createAssetFunc = function() {
-    	createAsset.createAsset($scope.assetContainerId, $scope.assetName, $scope.assetDescription);
+    	createAsset.createAsset($scope.assetContainerId, $scope.assetName, $scope.assetDescription, $scope.assetUrl);
     }
 
     var getAssetContainerFunc = function() {
@@ -41,10 +42,19 @@ angular.module('collaborateApp')
    			console.log($scope.assetContainer);
 
 
-   		}, function(err){
+   		}, function(){
    			// error	
    		});    	
     } 
+
+    $scope.toggleAddAssetForm = function() {
+      if($scope.addAssetForm == false) {
+        $scope.addAssetForm = true;
+      }
+      else {
+        $scope.addAssetForm = false;
+      }
+    }
 
     $scope.init();
   });

@@ -1,28 +1,52 @@
 <!-- Rad 1 -->
 <div class="row">
   <div class="col-md-4">
+
+
   <h2>Latest projects</h2>
+  <input ng-model="latestProjectsSearchText" type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Search Project">
+  <br>
+  <i class="fa fa-spinner fa-spin" data-loading></i> 
   <ul class="list-group">
-    <li ng-repeat="project in projects | orderBy: '-creationDate'" class="list-group-item">{{project.creationDate | date:'medium'}} - <strong><a ng-href="#/project/{{project.id}}">{{project.title}}</strong></a></li>
+    <li ng-repeat="project in projects | filter:latestProjectsSearchText | orderBy: '-creationDate'" class="list-group-item fx-fade-down fx-easing-bounce">
+    {{project.creationDate | date:'medium'}} - 
+    <strong><a ng-href="#/project/{{project.id}}">
+    <i class="fa fa-folder"></i> {{project.title}} 
+    </strong></a>
+      &nbsp;&nbsp;&nbsp;&nbsp; Mer info om projektet, format, osv (ska gå fort att browsa)
+    </li>
   </ul>
   </div>
+
+
   <div class="col-md-4">
   <h2>Popular projects</h2>
+  <input ng-model="popularProjectsSearchText" type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Search Project">
+  <br>
   LOOP
   </div>
+
+
   <div class="col-md-4">
-  <h2>Featured projects</h2>
-  LOOP
+  <h2>Assets</h2>
+  <input ng-model="assetsSearchText" type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Search Asset">
+  <input type="checkbox" ng-click="includeColour('Sprite')"/> Sprite-(Inte implementerat)</br/> 
+  <br>
+
+  <ul class="list-group">
+    <li ng-repeat="assetContainer in assetContainers | filter:colourFilter | filter:assetsSearchText" class="list-group-item fx-fade-down fx-easing-bounce">
+    <a ng-href="#/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}---{{assetContainer.category}}
+    </a>
+    </li>
+  </ul>
   </div>
 </div>
 <!-- Rad 2 -->
 <div class="row">
+<!--
   <div class="col-md-4">
   <h2>Top collaborators</h2>
   LOOP
   </div>
-  <div class="col-md-4">
-  <h2>Latest assets</h2>
-  LOOP
-  </div>
+  -->
 </div>

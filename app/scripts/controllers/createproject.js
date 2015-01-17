@@ -15,8 +15,7 @@ angular.module('collaborateApp')
       'Karma'
     ];
     $scope.projectTags = [
-        { text: 'Add' },
-        { text: 'Tags' }
+    
     ];
 
     $scope.securityPolicyOptions =
@@ -33,6 +32,8 @@ angular.module('collaborateApp')
     $scope.createProject = function() {
     	console.log('Create Project Method Activated');
       createProject.createProject($scope.projectTitle, $scope.projectDescription, $scope.projectTags, $scope.projectSecurityPolicy);
+      console.log($scope.projectDescription);
     };
 
+    
   });

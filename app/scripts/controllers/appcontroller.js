@@ -15,7 +15,7 @@ angular.module('collaborateApp')
       'Karma'
     ];
 
-    $scope.currentUser = $cookies.currentUser;
+    $scope.currentUser = $cookies.currentUserName;
 
     $scope.$on('userLoggedIn', function(event, data) {
     $scope.currentUser = data.fullName;

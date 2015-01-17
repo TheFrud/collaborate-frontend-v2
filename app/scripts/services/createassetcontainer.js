@@ -14,9 +14,9 @@ angular.module('collaborateApp')
 
     var service = {};
 
-    service.createAssetContainer = function(projectId, assetContainerName, assetContainerDescription) {
+    service.createAssetContainer = function(projectId, assetContainerName, assetContainerDescription,projectAssetContainerCategory) {
       $http.post('http://localhost:8085/project/assetcontainer/add', 
-        {withCredentials: true, projectId: projectId, assetContainerName: assetContainerName, assetContainerDescription: assetContainerDescription})
+        {withCredentials: true, projectId: projectId, assetContainerName: assetContainerName, assetContainerDescription: assetContainerDescription, projectAssetContainerCategory: projectAssetContainerCategory})
       .success(function(response) {
         console.log('Gick bra att lägga till asset container.');
       }).error(function(response) {

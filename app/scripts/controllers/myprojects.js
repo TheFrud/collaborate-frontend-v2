@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name collaborateApp.controller:ProfileCtrl
+ * @name collaborateApp.controller:MyprojectsCtrl
  * @description
- * # ProfileCtrl
+ * # MyprojectsCtrl
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('ProfileCtrl', function ($scope, session) {
+  .controller('MyprojectsCtrl', function ($scope, getProjects) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -18,22 +18,22 @@ angular.module('collaborateApp')
     // Inititalization
     $scope.init = function() {
     	// Metoden
-    	$scope.getCurrentUserFunc();
+    	$scope.getProjectWhereUserIsOwner();
     }
 
-	$scope.currentUser = {};
+    $scope.userProjects = [];
 
-    $scope.getCurrentUserFunc = function() {
-    	session.getCurrentUser()
+    $scope.getProjectWhereUserIsOwner = function() {
+    	getProjects.getProjectWhereUserIsOwner()
    		.then(function(res){
    			// success
-   			$scope.currentUser = session.currentUser;
+   			$scope.userProjects = getProjects.userProjects;
+
 
    		}, function(){
    			// error	
    		});
     }
 
-    $scope.init();     
-
+    $scope.init(); 
   });

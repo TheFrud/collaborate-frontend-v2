@@ -14,6 +14,7 @@ angular.module('collaborateApp')
 
     var service = {};
     service.assetContainer = null;
+    service.assetContainers = [];
 
     service.getAssetContainer = function(assetContainerId) {
       var defer = $q.defer();
@@ -36,6 +37,26 @@ angular.module('collaborateApp')
         return defer.promise;       
     }
 
+    service.getAssetContainers = function() {
+      var defer = $q.defer();
+      $http.get('http://localhost:8085/getassetcontainers').
+        success(function(data, status, headers, config) {
+          // this callback will be called asynchronously
+          // when the response is available
+          console.log("Gick bra att hämta asset containers");
+          service.assetContainers = data;
+          defer.resolve(data);
+
+        }).
+        error(function(data, status, headers, config) {
+          // called asynchronously if an error occurs
+          // or server returns response with an error status.
+          console.log("Gick inte att hämta asset containers");
+          defer.reject(err);
+
+        });      
+        return defer.promise;       
+    }
     return service;
 
   });
