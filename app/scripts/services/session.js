@@ -37,6 +37,17 @@ angular.module('collaborateApp')
         return defer.promise;      
     }
   */
+
+    service.editUser = function(bio) {
+      $http.post('http://localhost:8085/user/edit', 
+        {withCredentials: true, bio: bio})
+      .success(function(response) {
+        console.log('Gick bra att redigera användare.');
+      }).error(function(response) {
+        console.log('Gick skit att redigera användare');
+      });
+    };      
+
     service.getCurrentUser = function() {
       var defer = $q.defer();
       $http.get('http://localhost:8085/getcurrentuser').

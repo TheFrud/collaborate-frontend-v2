@@ -14,8 +14,8 @@ angular.module('collaborateApp')
 
     var service = {};
 
-    service.register = function(email, password, fullname) {
-      $http.post('http://localhost:8085/register', {email: email, password: password, fullname: fullname}).then(function(response) {
+    service.register = function(email, username, password, fullname) {
+      $http.post('http://localhost:8085/register', {email: email,username: username, password: password, fullname: fullname}).then(function(response) {
       $location.path("/login");
       });        
     }

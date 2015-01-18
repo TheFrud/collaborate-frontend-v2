@@ -1,21 +1,69 @@
 //import "bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss";
+//$btn-default-color:              #FFFFFF !default;
+//$btn-default-bg:                 #591C61 !default;
+//$btn-default-border:             #591C61 !default;
+
+//$btn-primary-color:              #FFFFFF !default;
+//$btn-primary-bg:                 #591C61 !default;
+//$btn-primary-border:             #591C61 !default;
+
 $btn-default-color:              #FFFFFF !default;
-$btn-default-bg:                 #591C61 !default;
-$btn-default-border:             #591C61 !default;
+$btn-default-bg:                 #15B8FF !default;
+$btn-default-border:             #15B8FF !default;
 
 $btn-primary-color:              #FFFFFF !default;
-$btn-primary-bg:                 #591C61 !default;
-$btn-primary-border:             #591C61 !default;
-
+$btn-primary-bg:                 #15B8FF !default;
+$btn-primary-border:             #15B8FF !default;
 
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+/*
+  text-shadow: 0 1px 0 #0087CC,
+             0 2px 0 #0087CC,
+             0 3px 0 #0087CC,
+             0 4px 0 #0087CC,
+             0 5px 0 #222222,
+             0 6px 1px rgba(0,0,0,.1),
+             0 0 5px rgba(0,0,0,.1),
+             0 1px 3px rgba(0,0,0,.3),
+             0 3px 5px rgba(0,0,0,.2),
+             0 5px 10px rgba(0,0,0,.25),
+             0 10px 10px rgba(0,0,0,.2),
+             0 20px 20px rgba(0,0,0,.15);
+
+  text-shadow: 0 1px 0 #0087CC,
+             0 2px 0 #222222,
+             0 3px 0 #222222,
+             0 4px 0 #222222,
+             0 5px 0 #222222,
+             0 6px 1px rgba(0,0,0,.1),
+             0 0 5px rgba(0,0,0,.1),
+             0 1px 3px rgba(0,0,0,.3),
+             0 3px 5px rgba(0,0,0,.2),
+             0 5px 10px rgba(0,0,0,.25),
+             0 10px 10px rgba(0,0,0,.2),
+             0 20px 20px rgba(0,0,0,.15);             
+*/
+.landing-page-title{
+  //
+}
+
+.fa-question-circle{
+  color: #15B8FF;
+
+}
+
+.rating-text{
+  color: #F1C904;
+}
+
 .fa-plus-square{
   font-size: 2em;
-  color: #591C61
+  // color: #591C61
+  color: #15B8FF;
 }
 
 .fa-spinner {
@@ -24,21 +72,40 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 .fa-user {
   font-size: 20em;
-  color: #591C61
+  // color: #591C61
+  color: #15B8FF;
 }
 .fa-folder {
-  color: #591C61
+  // color: #591C61
+  color: #15B8FF;
 }
 .fa-star {
-  color: #FFD700
+  // color: #FFD700
+  //text-shadow: 3px 3px 3px #ccc;
+  text-shadow: 0 1px 0 #F1C904,
+               0 2px 0 #F1C904,
+               0 3px 0 #F1C904,
+               0 4px 0 #F1C904,
+               0 5px 0 #F1C904,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+  font-size: 1.8em;
+  color: #FEF102;
 }
 
 .btn {
     border-radius: 0px;
+
 }
 
 .navbar {
-  background-color: #210538;
+  //background-color: #210538;
+  background-color: #0087CC;
 }
 .browsehappy {
   margin: 0.2em 0;

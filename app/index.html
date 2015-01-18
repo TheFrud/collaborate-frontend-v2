@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
     <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css" />
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -41,15 +42,15 @@
         <ul class="nav nav-pills pull-right">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-              {{currentUser}}
+              <i class="fa fa-user-small"></i>&nbsp;{{currentUser}}
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#/profile">Profile</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Settings</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Projects</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/user/settings">Settings</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/myprojects">Projects</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Assets</a></li>
-              <li ng-click="logoutFunc()" role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
+              <li ng-click="logoutFunc()" role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-sign-out"></i>&nbsp;Logout</a></li>
             </ul>
           </div>
         </ul>
@@ -109,6 +110,7 @@
     <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
     <script src="bower_components/ngFx/dist/ngFx.js"></script>
     <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -138,6 +140,9 @@
         <script src="scripts/directives/loading.js"></script>
         <script src="scripts/services/getassets.js"></script>
         <script src="scripts/directives/profile.js"></script>
+        <script src="scripts/controllers/usersettings.js"></script>
+        <script src="scripts/services/removeproject.js"></script>
+        <script src="scripts/services/updateprojectdescription.js"></script>
         <!-- endbuild -->
 </body>
 </html>

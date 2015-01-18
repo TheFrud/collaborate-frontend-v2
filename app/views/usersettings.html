@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-4"></div>
+    <div class="col-md-4">
+	<center>
+	<i class="fa fa-user"></i>
+	</center>
+	<h3>{{currentUser.fullName}}</h3>
+	<h4>{{currentUser.rating}}<i class="fa fa-star"></i></h4>
+	<h4>Edit bio</h4>
+	<!--
+	<i ng-click="toggleEditBio()" class="glyphicon glyphicon-edit"></i> 
+	<div ng-show="!editBio" ta-bind ng-model="currentUser.bio"></div>
+	-->
+	<div ng-show="editBio">
+	<div text-angular ng-model="currentUser.bio"></div>
+	</div>
+	<button ng-click="editUserFunc()" class="btn btn-primary">Update</button>
+	</div>
+	<div class="col-md-4"></div>
+</div>
+

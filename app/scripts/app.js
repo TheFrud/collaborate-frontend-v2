@@ -24,7 +24,8 @@ var app = angular
     'ngTouch',
     'ngTagsInput',
     'ngFx',
-    'textAngular' 
+    'textAngular',
+    'xeditable' 
   ])
   .config(['$httpProvider', function($httpProvider) {
   // $httpProvider.defaults.withCredentials = true;
@@ -58,7 +59,16 @@ var app = angular
             return session.cookieExist();
           }
         }
-      })      
+      }) 
+      .when('/user/settings', {
+        templateUrl: 'views/usersettings.html',
+        controller: 'UsersettingsCtrl',
+        resolve:{
+          authorize:function(session) {
+            return session.cookieExist();
+          }
+        }
+      })             
       .when('/project/:id', {
         templateUrl: 'views/projectview.html',
         controller: 'ProjectviewCtrl',

@@ -1,7 +1,8 @@
-<h3>Edit Project</h3>
-<p>Denna del måste vara bra. Ska vara lätt att göra saker.</p>
-<p>Direct edit? </p>
-
+<h3>{{project.title}}</h3>
+<button ng-click="removeProjectFunc()" type="button" class="btn btn-danger">Remove Project</button>
+<div text-angular ng-model="project.description"></div>
+<button ng-click="updateProjectDescriptionFunc()" type="button" class="btn btn-warning">Update description</button>
+<br>
 <form ng-submit="createAssetContainerFunc()" role="form">
   <legend>Add Asset Container</legend>
 

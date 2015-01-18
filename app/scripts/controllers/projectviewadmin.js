@@ -8,7 +8,7 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('ProjectviewadminCtrl', function ($scope, $routeParams, createAssetContainer, getProjects) {
+  .controller('ProjectviewadminCtrl', function ($scope, $routeParams, createAssetContainer, getProjects, removeProject, updateProjectDescription) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -32,6 +32,15 @@ angular.module('collaborateApp')
       createAssetContainer.createAssetContainer($scope.id, $scope.assetContainerName, $scope.assetContainerDescription, $scope.projectAssetContainerCategory);
       console.log("Försökte skapa asset container");
   }    
+
+  $scope.removeProjectFunc = function() {
+    removeProject.removeProject($scope.project.id);
+  }
+
+  $scope.updateProjectDescriptionFunc = function() {
+    console.log("dsadsa");
+    updateProjectDescription.updateProjectDescription($scope.project.id, $scope.project.description);
+  }
 
   var getProject = function() {
       getProjects.getProject($scope.id)

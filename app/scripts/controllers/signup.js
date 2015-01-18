@@ -16,6 +16,6 @@ angular.module('collaborateApp')
     ];
 
     $scope.register = function() {
-    	register.register($scope.email, $scope.password, $scope.fullname);
+    	register.register($scope.email, $scope.username, $scope.password, $scope.fullname);
     }
   });
