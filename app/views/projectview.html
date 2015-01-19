@@ -19,7 +19,7 @@
   <div ng-repeat="assetContainer in project.assetContainers | filter : { status : 'needed' }" class="col-md-2">
   <ul class="list-group">
   	<li class="list-group-item">
-  <a ng-href="#/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
+  <a ng-href="#/project/{{project.id}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
   	</li>
   </ul>
   </div>
@@ -41,7 +41,7 @@
   <div ng-repeat="assetContainer in project.assetContainers | filter : { status : 'completed' }" class="col-md-2">
   <ul class="list-group">
   	<li class="list-group-item">
-  <a ng-href="#/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
+  <a ng-href="#/project/{{project.id}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
   	</li>
   </ul>
   </div>

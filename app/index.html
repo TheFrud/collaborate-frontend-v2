@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css" />
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-default.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -32,7 +34,7 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/myprojects">My Projects:</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/myprojects">My Projects</a></li>
               <li ng-repeat="project in myProjects" role="presentation"><a role="menuitem" tabindex="-1" href="#">ITEM</a></li>
               <li class="divider"></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#/createproject">Create Project</a></li>
@@ -46,7 +48,7 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/profile">Profile</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/profile/{{currentUserId}}">Profile</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#/user/settings">Settings</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#/myprojects">Projects</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Assets</a></li>
@@ -111,6 +113,7 @@
     <script src="bower_components/ngFx/dist/ngFx.js"></script>
     <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
     <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="bower_components/ngDialog/js/ngDialog.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -143,6 +146,7 @@
         <script src="scripts/controllers/usersettings.js"></script>
         <script src="scripts/services/removeproject.js"></script>
         <script src="scripts/services/updateprojectdescription.js"></script>
+        <script src="scripts/controllers/assetview.js"></script>
         <!-- endbuild -->
 </body>
 </html>

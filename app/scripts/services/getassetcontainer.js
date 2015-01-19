@@ -31,7 +31,7 @@ angular.module('collaborateApp')
           // called asynchronously if an error occurs
           // or server returns response with an error status.
           console.log("Gick inte att hämta asset container");
-          defer.reject(err);
+          defer.reject();
 
         });      
         return defer.promise;       
@@ -52,7 +52,7 @@ angular.module('collaborateApp')
           // called asynchronously if an error occurs
           // or server returns response with an error status.
           console.log("Gick inte att hämta asset containers");
-          defer.reject(err);
+          defer.reject();
 
         });      
         return defer.promise;       

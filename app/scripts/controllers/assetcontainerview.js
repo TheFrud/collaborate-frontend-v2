@@ -15,8 +15,9 @@ angular.module('collaborateApp')
       'Karma'
     ];
 
-    $scope.assetContainerId = $routeParams.id;
+    $scope.assetContainerId = $routeParams.assetcontainerid;
     $scope.assetContainerTitle = $routeParams.title;
+    $scope.projectId = $routeParams.projectid;
     $scope.addAssetForm = false;
 
     $scope.assetContainer = null;
@@ -28,10 +29,10 @@ angular.module('collaborateApp')
     }
 
     $scope.id = $routeParams.id;
-    $scope.project;
+    
 
     $scope.createAssetFunc = function() {
-    	createAsset.createAsset($scope.assetContainerId, $scope.assetName, $scope.assetDescription, $scope.assetUrl);
+    	createAsset.createAsset($scope.projectId, $scope.assetContainerId, $scope.assetName, $scope.assetDescription, $scope.assetUrl);
     }
 
     var getAssetContainerFunc = function() {

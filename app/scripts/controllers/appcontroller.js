@@ -16,6 +16,7 @@ angular.module('collaborateApp')
     ];
 
     $scope.currentUser = $cookies.currentUserName;
+    $scope.currentUserId = $cookies.currentUserId;
 
     $scope.$on('userLoggedIn', function(event, data) {
     $scope.currentUser = data.fullName;

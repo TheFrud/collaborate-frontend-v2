@@ -8,7 +8,7 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('ProjectviewadminCtrl', function ($scope, $routeParams, createAssetContainer, getProjects, removeProject, updateProjectDescription) {
+  .controller('ProjectviewadminCtrl', function ($scope, $routeParams, $location, ngDialog, createAssetContainer, getProjects, removeProject, updateProjectDescription) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -31,10 +31,20 @@ angular.module('collaborateApp')
   $scope.createAssetContainerFunc = function() {
       createAssetContainer.createAssetContainer($scope.id, $scope.assetContainerName, $scope.assetContainerDescription, $scope.projectAssetContainerCategory);
       console.log("Försökte skapa asset container");
+      ngDialog.close();
   }    
 
   $scope.removeProjectFunc = function() {
-    removeProject.removeProject($scope.project.id);
+    removeProject.removeProject($scope.project.id)
+    .then(function(){
+      ngDialog.close();
+      $location.path("/main");
+    }, function() {
+      ngDialog.close();
+      console.log("Gick inte att ta bort projektet.");
+      $location.path("/main");
+    });
+
   }
 
   $scope.updateProjectDescriptionFunc = function() {
@@ -53,6 +63,15 @@ angular.module('collaborateApp')
         // error  
       });     
     }
+
+    // DIALOG FUNCTIONS
+  $scope.removeProjectDialog = function () {
+      ngDialog.open({ template: 'views/dialogs/removeprojectdialog.html', controller: 'ProjectviewadminCtrl' });
+  };
+
+  $scope.addAssetContainerDialog = function() {
+      ngDialog.open({template: 'views/dialogs/addassetcontainerdialog.html', controller: 'ProjectviewadminCtrl'});
+  }    
 
     $scope.init();   
 

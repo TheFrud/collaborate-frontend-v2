@@ -42,7 +42,7 @@ angular.module('collaborateApp')
    			$scope.project = getProjects.project;
    			console.log($scope.project);
         $scope.isUserAdminOfProject();
-   		}, function(err){
+   		}, function(){
    			// error	
    		});    	
     }

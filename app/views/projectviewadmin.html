@@ -1,25 +1,42 @@
-<h3>{{project.title}}</h3>
-<button ng-click="removeProjectFunc()" type="button" class="btn btn-danger">Remove Project</button>
-<div text-angular ng-model="project.description"></div>
-<button ng-click="updateProjectDescriptionFunc()" type="button" class="btn btn-warning">Update description</button>
-<br>
-<form ng-submit="createAssetContainerFunc()" role="form">
-  <legend>Add Asset Container</legend>
-
-  <div class="form-group">
-    <label for="">Name</label>
-    <input ng-model="assetContainerName" type="text" class="form-control" id="" placeholder="Input field">
-    <label for="">Description</label>
-    <div text-angular ng-model="assetContainerDescription"></div>
-    <label for="">Category</label>
-    <select ng-init="projectAssetContainerCategory = assetContainerCategoryOptions[0]" ng-options="option for option in assetContainerCategoryOptions" ng-model="projectAssetContainerCategory" name="" id="input" class="form-control">
-
-	</select>
+<div class="row">
+  <div class="col-md-6">
+    <h3>{{project.title}}</h3>
+    <button ng-click="removeProjectDialog()" type="button" class="btn btn-danger">Remove Project</button>
+    <button ng-click="addAssetContainerDialog()" type="button" class="btn btn-success">Add Asset</button>
+    <div text-angular ng-model="project.description"></div>
+    <button ng-click="updateProjectDescriptionFunc()" type="button" class="btn btn-warning">Update description</button>
+    <br>
   </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-<h3>Contributions</h3>
-Loopa igenom asset containers, samt deras assets.<br>
-Markera assets som accepterade här?
+  <div class="col-md-6">
+    <div class="row">
+    <div class="col-md-4">
+      <h3>Activities</h3>
+      <ul>
+        <li ng-repeat="activity in project.activities">
+        {{activity.creationDate | date:'medium'}}:<br><i>{{activity.message}}</i>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+     <h3>Assets</h3>
+      <ul>
+        <li ng-repeat="assetcontainer in project.assetContainers">
+          <a ng-href="#/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}">{{assetcontainer.title}}</a>
+            <ul>
+            <li ng-repeat="asset in assetcontainer.assets">
+              <a ng-href="#/asset/{{asset.id}}/{{asset.title}}">{{asset.title}}</a>
+            </li>
+            </ul>
+        </li>
+      </ul>     
+    </div>
+    <div class="col-md-4">
+      <h3>Owners</h3>
+      <ul>
+        <li ng-repeat="owner in project.owners">
+        <a ng-href="#/profile/{{owner.id}}">{{owner.username}}
+        </li>
+      </ul>      
+    </div>
+  </div>
+</div>

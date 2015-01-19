@@ -35,8 +35,8 @@
 
   <ul class="list-group">
     <li ng-repeat="assetContainer in assetContainers | filter:colourFilter | filter:assetsSearchText" class="list-group-item fx-fade-down fx-easing-bounce">
-    <a ng-href="#/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}---{{assetContainer.category}}
-    </a>
+    <a ng-href="#/project/{{project.id}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">Fixa länk..sen{{assetContainer.title}}---{{assetContainer.category}}
+    </a>        
     </li>
   </ul>
   </div>

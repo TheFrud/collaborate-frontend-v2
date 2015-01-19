@@ -1,4 +1,6 @@
 //import "bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss";
+
+// LILA THEME
 //$btn-default-color:              #FFFFFF !default;
 //$btn-default-bg:                 #591C61 !default;
 //$btn-default-border:             #591C61 !default;
@@ -6,6 +8,17 @@
 //$btn-primary-color:              #FFFFFF !default;
 //$btn-primary-bg:                 #591C61 !default;
 //$btn-primary-border:             #591C61 !default;
+
+// BLÅTT THEME
+//$btn-default-color:              #FFFFFF !default;
+//$btn-default-bg:                 #15B8FF !default;
+//$btn-default-border:             #15B8FF !default;
+
+//$btn-primary-color:              #FFFFFF !default;
+//$btn-primary-bg:                 #15B8FF !default;
+//$btn-primary-border:             #15B8FF !default;
+
+// BRA SVART (inte helsvart liksom): #161616
 
 $btn-default-color:              #FFFFFF !default;
 $btn-default-bg:                 #15B8FF !default;
@@ -47,6 +60,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
              0 10px 10px rgba(0,0,0,.2),
              0 20px 20px rgba(0,0,0,.15);             
 */
+
+.side-panel {
+  background-color: #0087CC;
+}
+
 .landing-page-title{
   //
 }
@@ -106,6 +124,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .navbar {
   //background-color: #210538;
   background-color: #0087CC;
+
 }
 .browsehappy {
   margin: 0.2em 0;

@@ -25,7 +25,8 @@ var app = angular
     'ngTagsInput',
     'ngFx',
     'textAngular',
-    'xeditable' 
+    'xeditable',
+    'ngDialog' 
   ])
   .config(['$httpProvider', function($httpProvider) {
   // $httpProvider.defaults.withCredentials = true;
@@ -87,7 +88,7 @@ var app = angular
           }
         }        
       })      
-      .when('/profile', {
+      .when('/profile/:id', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',
         resolve:{
@@ -117,7 +118,7 @@ var app = angular
           }
         }        
       }) 
-      .when('/assetcontainer/:id/:title', {
+      .when('/project/:projectid/assetcontainer/:assetcontainerid/:title', {
         templateUrl: 'views/assetcontainerview.html',
         controller: 'AssetcontainerviewCtrl',
         resolve:{
@@ -125,7 +126,16 @@ var app = angular
             return session.cookieExist();
           }
         }        
-      })                                
+      }) 
+      .when('/asset/:id/:title', {
+        templateUrl: 'views/assetview.html',
+        controller: 'AssetviewCtrl',
+        resolve:{
+          authorize:function(session) {
+            return session.cookieExist();
+          }
+        }        
+      })                                     
       .otherwise({
         redirectTo: '/'
       });

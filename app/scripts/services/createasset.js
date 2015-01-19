@@ -14,9 +14,9 @@ angular.module('collaborateApp')
 
     var service = {};
 
-    service.createAsset = function(assetContainerId, assetName, assetDescription, assetUrl) {
+    service.createAsset = function(projectId, assetContainerId, assetName, assetDescription, assetUrl) {
       $http.post('http://localhost:8085/asset/create', 
-        {withCredentials: true, assetContainerId: assetContainerId, assetName: assetName, assetDescription: assetDescription, assetUrl: assetUrl })
+        {withCredentials: true, projectId: projectId, assetContainerId: assetContainerId, assetName: assetName, assetDescription: assetDescription, assetUrl: assetUrl })
       .success(function(response) {
         console.log('Gick bra att skapa asset');
       }).error(function(response) {
