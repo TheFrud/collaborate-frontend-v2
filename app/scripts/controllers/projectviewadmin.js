@@ -8,7 +8,7 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('ProjectviewadminCtrl', function ($scope, $routeParams, $location, ngDialog, createAssetContainer, getProjects, removeProject, updateProjectDescription) {
+  .controller('ProjectviewadminCtrl', function ($scope, $routeParams, $location, ngDialog, createAssetContainer, getProjects, removeProject, updateProjectDescription, getUsers, addUserToProject) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -17,9 +17,21 @@ angular.module('collaborateApp')
 
   $scope.init = function() {
       getProject();
+      $scope.getUsersFunc();
   }
-	$scope.id = $routeParams.id;
+	$scope.id = $routeParams.projectid;
 	$scope.project = {};
+  $scope.users = [];
+
+  $scope.addOwnerToProject = function() {
+    addUserToProject.addOwnerToProject($scope.selected, $scope.project.id)
+    .then(function(){
+      getProject();
+      ngDialog.close();
+    }, function() {
+      ngDialog.close();
+    });    
+  }
 
   $scope.assetContainerCategoryOptions =
     [
@@ -27,6 +39,15 @@ angular.module('collaborateApp')
         "Sound effect",
         "Music"
   ]; 
+
+  $scope.getUsersFunc = function() {
+    getUsers.getUsers()
+    .then(function(){
+      $scope.users = getUsers.users;
+    }, function() {
+
+    });    
+  }
 
   $scope.createAssetContainerFunc = function() {
       createAssetContainer.createAssetContainer($scope.id, $scope.assetContainerName, $scope.assetContainerDescription, $scope.projectAssetContainerCategory);
@@ -72,6 +93,10 @@ angular.module('collaborateApp')
   $scope.addAssetContainerDialog = function() {
       ngDialog.open({template: 'views/dialogs/addassetcontainerdialog.html', controller: 'ProjectviewadminCtrl'});
   }    
+
+  $scope.addOwnerToProjectDialog = function() {
+      ngDialog.open({template: 'views/dialogs/addprojectownerdialog.html', controller: 'ProjectviewadminCtrl'});
+  }
 
     $scope.init();   
 

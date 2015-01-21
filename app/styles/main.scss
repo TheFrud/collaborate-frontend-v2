@@ -61,6 +61,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
              0 20px 20px rgba(0,0,0,.15);             
 */
 
+.fa-spinner{
+  color: white;
+  font-size: 0.1em
+}
+
 .side-panel {
   background-color: #0087CC;
 }
@@ -189,6 +194,10 @@ body {
   p + h4 {
     margin-top: 28px;
   }
+}
+
+html {
+  overflow-y: scroll;
 }
 
 /* Responsive: Portrait tablets and up */

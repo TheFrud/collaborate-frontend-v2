@@ -24,14 +24,30 @@ angular.module('collaborateApp')
     // Inititalization end
 
     $scope.projects = [];
-    $scope.assetContainers = [];
+    // $scope.assetContainers = [];
+    $scope.totalItems = 100;
+    $scope.currentPage = 1;
+    $scope.maxSize = 2;
+    $scope.bigTotalItems = 175;
+    $scope.bigCurrentPage = 1;
+
+
+    $scope.setPage = function (pageNo) {
+      $scope.currentPage = pageNo;
+    };
+
+    $scope.pageChanged = function() {
+      $log.log('Page changed to: ' + $scope.currentPage);
+    };
 
     var getProjectsFunc = function() {
     	getProjects.getProjects()
    		.then(function(res){
    			// success
    			$scope.projects = getProjects.projects;
-
+        // $scope.totalItems = $scope.projects.length;
+        console.log($scope.totalItems);
+        console.log($scope.projects);
 
    		}, function(){
    			// error	

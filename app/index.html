@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>devjungler</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -48,16 +48,18 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/profile/{{currentUserId}}">Profile</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/profile/{{currentUserId}}/{{currentUser}}">Profile</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#/user/settings">Settings</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#/myprojects">Projects</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Assets</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/myassets">Assets</a></li>
               <li ng-click="logoutFunc()" role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-sign-out"></i>&nbsp;Logout</a></li>
             </ul>
           </div>
         </ul>
         <center><h3 class="text-muted"><a href="#/"><img src="images/brand-logo.png"></a></h3></center>
+        <!-- <center><i class="fa fa-spinner fa-spin" data-loading></i> </center> -->
       </div>   
+
     <div class="container-fluid">
 
       <div ng-view=""></div>
@@ -114,6 +116,7 @@
     <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
     <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -147,6 +150,9 @@
         <script src="scripts/services/removeproject.js"></script>
         <script src="scripts/services/updateprojectdescription.js"></script>
         <script src="scripts/controllers/assetview.js"></script>
+        <script src="scripts/controllers/myassets.js"></script>
+        <script src="scripts/services/getusers.js"></script>
+        <script src="scripts/services/addusertoproject.js"></script>
         <!-- endbuild -->
 </body>
 </html>

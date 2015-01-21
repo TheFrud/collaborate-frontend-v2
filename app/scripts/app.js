@@ -26,7 +26,8 @@ var app = angular
     'ngFx',
     'textAngular',
     'xeditable',
-    'ngDialog' 
+    'ngDialog',
+    'ui.bootstrap'
   ])
   .config(['$httpProvider', function($httpProvider) {
   // $httpProvider.defaults.withCredentials = true;
@@ -61,6 +62,15 @@ var app = angular
           }
         }
       }) 
+      .when('/myassets', {
+        templateUrl: 'views/myassets.html',
+        controller: 'MyassetsCtrl',
+        resolve:{
+          authorize:function(session) {
+            return session.cookieExist();
+          }
+        }
+      })       
       .when('/user/settings', {
         templateUrl: 'views/usersettings.html',
         controller: 'UsersettingsCtrl',
@@ -70,7 +80,7 @@ var app = angular
           }
         }
       })             
-      .when('/project/:id', {
+      .when('/project/:id/:title', {
         templateUrl: 'views/projectview.html',
         controller: 'ProjectviewCtrl',
         resolve:{
@@ -79,7 +89,7 @@ var app = angular
           }
         }        
       })
-      .when('/project/:id/admin', {
+      .when('/project/:projectid/:projecttitle/admin', {
         templateUrl: 'views/projectviewadmin.html',
         controller: 'ProjectviewadminCtrl',
         resolve:{
@@ -88,7 +98,7 @@ var app = angular
           }
         }        
       })      
-      .when('/profile/:id', {
+      .when('/profile/:profileid/:profileusername', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',
         resolve:{
@@ -118,7 +128,7 @@ var app = angular
           }
         }        
       }) 
-      .when('/project/:projectid/assetcontainer/:assetcontainerid/:title', {
+      .when('/project/:projectid/:projecttitle/assetcontainer/:assetcontainerid/:assettitle', {
         templateUrl: 'views/assetcontainerview.html',
         controller: 'AssetcontainerviewCtrl',
         resolve:{
@@ -127,7 +137,7 @@ var app = angular
           }
         }        
       }) 
-      .when('/asset/:id/:title', {
+      .when('/project/:projectid/:projecttitle/assetcontainer/:assetcontainerid/:assetcontainertitle/asset/:assetid/:assettitle', {
         templateUrl: 'views/assetview.html',
         controller: 'AssetviewCtrl',
         resolve:{

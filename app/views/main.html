@@ -6,11 +6,10 @@
   <h2>Latest projects</h2>
   <input ng-model="latestProjectsSearchText" type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Search Project">
   <br>
-  <i class="fa fa-spinner fa-spin" data-loading></i> 
   <ul class="list-group">
     <li ng-repeat="project in projects | filter:latestProjectsSearchText | orderBy: '-creationDate'" class="list-group-item fx-fade-down fx-easing-bounce">
     {{project.creationDate | date:'medium'}} - 
-    <strong><a ng-href="#/project/{{project.id}}">
+    <strong><a ng-href="#/project/{{project.id}}/{{project.title}}">
     <i class="fa fa-folder"></i> {{project.title}} 
     </strong></a>
     <br>
@@ -36,6 +35,35 @@
   <input type="checkbox" ng-click="includeColour('Sprite')"/> Sprite-(Inte implementerat)</br/> 
   <br>
 
+  
+  <div ng-repeat="project in projects">
+  <a ng-href="#/project/{{project.id}}/{{project.title}}">{{project.title}}</a>
+        <ul class="list-group">
+        <li class="list-group-item fx-fade-down fx-easing-bounce" ng-repeat="assetcontainer in project.assetContainers | filter:assetsSearchText | orderBy: '-creationDate'"><a ng-href="#/project/{{project.id}}/{{project.title}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}">{{assetcontainer.title}}</a>
+        </li>
+        </ul>
+  </div>
+  </div>
+
+</div>
+<!-- Rad 2 
+<div class="row">
+<!--
+  <div class="col-md-4">
+  <h2>Top collaborators</h2>
+  LOOP
+  </div>
+  </div>
+  -->
+
+
+<!--
+  <div class="col-md-4">
+  <h2>Assets</h2>
+  <input ng-model="assetsSearchText" type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Search Asset">
+  <input type="checkbox" ng-click="includeColour('Sprite')"/> Sprite-(Inte implementerat)</br/> 
+  <br>
+
   <ul class="list-group">
     <li ng-repeat="assetContainer in assetContainers | filter:colourFilter | filter:assetsSearchText" class="list-group-item fx-fade-down fx-easing-bounce">
     <a ng-href="#/project/{{project.id}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">Fixa länk..sen{{assetContainer.title}}---{{assetContainer.category}}
@@ -44,12 +72,13 @@
   </ul>
   </div>
 </div>
-<!-- Rad 2 -->
+
 <div class="row">
-<!--
+
   <div class="col-md-4">
   <h2>Top collaborators</h2>
   LOOP
   </div>
-  -->
 </div>
+
+-->

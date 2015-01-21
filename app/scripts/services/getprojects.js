@@ -17,7 +17,6 @@ angular.module('collaborateApp')
     service.userProjects = [];
     service.project = null;
 
-    // METOD SKA IN HÄR: getProjectWhereUserIsOwner
     service.getProjectWhereUserIsOwner = function() {
       var defer = $q.defer();
       $http.get('http://localhost:8085/projects/getuserprojects').

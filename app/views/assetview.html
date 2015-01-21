@@ -1,1 +1,6 @@
-<p>This is the assetview view.</p>
+<a ng-href="#/">Main</a>&nbsp;|&nbsp;<a ng-href="#/project/{{projectId}}/{{projectTitle}}">Project:{{projectTitle}}</a>&nbsp;|&nbsp;
+<a ng-href="#/project/{{projectId}}/{{projectTitle}}/assetcontainer/{{assetContainerId}}/{{assetContainerTitle}}">Asset Container:{{assetContainerTitle}}</a>&nbsp;|&nbsp;<a ng-href="#/project/{{projectId}}/{{projectTitle}}/assetcontainer/{{assetContainerId}}/{{assetContainerTitle}}/asset/{{assetId}}/{{assetTitle}}"><b>Asset:{{assetTitle}}</b></a>
+<hr>
+<h3>{{asset.title}}</h3>
+<p>{{asset.description}}</p>
+<p><a ng-href="{{asset.link}}">Link to resource</p>

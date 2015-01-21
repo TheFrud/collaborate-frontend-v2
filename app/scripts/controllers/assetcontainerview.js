@@ -16,8 +16,9 @@ angular.module('collaborateApp')
     ];
 
     $scope.assetContainerId = $routeParams.assetcontainerid;
-    $scope.assetContainerTitle = $routeParams.title;
+    $scope.assetContainerTitle = $routeParams.assetcontainertitle;
     $scope.projectId = $routeParams.projectid;
+    $scope.projectTitle = $routeParams.projecttitle;
     $scope.addAssetForm = false;
 
     $scope.assetContainer = null;

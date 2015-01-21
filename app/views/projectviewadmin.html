@@ -3,6 +3,7 @@
     <h3>{{project.title}} (direct editable?)</h3>
     <button ng-click="removeProjectDialog()" type="button" class="btn btn-danger">Remove Project</button>
     <button ng-click="addAssetContainerDialog()" type="button" class="btn btn-success">Add Asset</button>
+    <button ng-click="addOwnerToProjectDialog()" type="button" class="btn btn-success">Add Owner</button>
     <div text-angular ng-model="project.description"></div>
     <button ng-click="updateProjectDescriptionFunc()" type="button" class="btn btn-warning">Update description</button>
     <br>
@@ -21,10 +22,10 @@
      <h3>Assets</h3>
       <ul>
         <li ng-repeat="assetcontainer in project.assetContainers">
-          <a ng-href="#/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}">{{assetcontainer.title}}</a>
+          <a ng-href="#project/{{project.id}}/{{project.id}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}">{{assetcontainer.title}}</a>
             <ul>
             <li ng-repeat="asset in assetcontainer.assets">
-              <a ng-href="#/asset/{{asset.id}}/{{asset.title}}">{{asset.title}}</a>
+              <a ng-href="#project/{{project.id}}/{{project.id}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}/asset/{{asset.id}}/{{asset.title}}">{{asset.title}}</a>
             </li>
             </ul>
         </li>
@@ -34,7 +35,7 @@
       <h3>Owners</h3>
       <ul>
         <li ng-repeat="owner in project.owners">
-        <a ng-href="#/profile/{{owner.id}}">{{owner.username}}
+        <a ng-href="#/profile/{{owner.id}}/{{owner.username}}">{{owner.username}}
         </li>
       </ul>      
     </div>

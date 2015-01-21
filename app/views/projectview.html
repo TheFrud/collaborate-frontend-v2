@@ -1,10 +1,12 @@
+<a ng-href="#/">Main</a>&nbsp;|&nbsp;<a ng-href="#/project/{{project.id}}/{{project.title}}"><b>Project:{{project.title}}</b></a>
+<hr>
 <h3>{{project.title}}</h3>
 <i>Created: {{project.creationDate | date:'medium'}} </i><br>
 <i>
 <div style="display:inline-block" ng-repeat="tag in project.tags"><span class="label label-warning">{{tag.text}}</span><!-- For one empty space-->&nbsp;</div>
 </i>
 <p>Security: {{project.securityPolicy}}</p>
-<a href="#/project/{{project.id}}/admin">
+<a href="#/project/{{project.id}}/{{project.title}}/admin">
 <div ng-show="isUserAdmin">
 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Admin View
 </div>
@@ -19,7 +21,7 @@
   <div ng-repeat="assetContainer in project.assetContainers | filter : { status : 'needed' }" class="col-md-2">
   <ul class="list-group">
   	<li class="list-group-item">
-  <a ng-href="#/project/{{project.id}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
+  <a ng-href="#/project/{{project.id}}/{{project.title}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
   	</li>
   </ul>
   </div>
@@ -41,7 +43,7 @@
   <div ng-repeat="assetContainer in project.assetContainers | filter : { status : 'completed' }" class="col-md-2">
   <ul class="list-group">
   	<li class="list-group-item">
-  <a ng-href="#/project/{{project.id}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
+  <a ng-href="#/project/{{project.id}}/{{project.title}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
   	</li>
   </ul>
   </div>

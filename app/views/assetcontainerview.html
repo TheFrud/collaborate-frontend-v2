@@ -1,11 +1,15 @@
+<a ng-href="#/">Main</a>&nbsp;|&nbsp;<a ng-href="#/project/{{projectId}}/{{projectTitle}}">Project:{{projectTitle}}</a>&nbsp;|&nbsp;
+<a ng-href="#/project/{{projectId}}/{{projectTitle}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}"><b>Asset Container:{{assetContainer.title}}</b></a>
+<hr>
+
 <h3>{{assetContainerTitle}}</h3>
 
 <div class="well well-lg">
   <div ta-bind ng-model="assetContainer.description">{{assetContainer.description}} </div>
 </div>
 <hr>
-<i ng-click="toggleAddAssetForm()" class="fa fa-plus-square"></i> 
-<div ng-show="addAssetForm">
+<i ng-click="isCollapsed = !isCollapsed" class="fa fa-plus-square"></i> 
+<div collapse="!isCollapsed">
 <form ng-submit="createAssetFunc()" role="form">
   <legend>Add Asset</legend>
 
@@ -27,7 +31,9 @@
 <h4>Uploaded Assets</h4>
 <div class="row">
   <div ng-repeat="asset in assetContainer.assets" class="col-md-2">
-  <h4>{{asset.title}}</h4>
+  <h4>
+  <a ng-href="#/project/{{projectId}}/{{projectTitle}}/assetcontainer/{{assetContainerId}}/{{assetContainer.title}}/asset/{{asset.id}}/{{asset.title}}">{{asset.title}}</a>
+  </h4>
   {{asset.description}}
   </div>
   <!--
