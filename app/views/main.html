@@ -13,7 +13,10 @@
     <strong><a ng-href="#/project/{{project.id}}">
     <i class="fa fa-folder"></i> {{project.title}} 
     </strong></a>
-      &nbsp;&nbsp;&nbsp;&nbsp; Mer info om projektet, format, osv (ska gå fort att browsa)
+    <br>
+      | {{project.assetContainers.length}} | {{project.assetContainers.length}} | 
+    <br>
+    <div style="display:inline-block" ng-repeat="tag in project.tags"><span class="label label-warning">{{tag.text}}</span><!-- For one empty space-->&nbsp;</div>
     </li>
   </ul>
   </div>
