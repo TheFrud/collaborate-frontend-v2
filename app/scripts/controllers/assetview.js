@@ -8,7 +8,7 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('AssetviewCtrl', function ($scope, $routeParams, getAssets) {
+  .controller('AssetviewCtrl', function ($scope, $routeParams, getAssets, ngDialog, addCommentToAsset, getProjects, approveAsset, session) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -23,9 +23,13 @@ angular.module('collaborateApp')
     $scope.assetTitle = $routeParams.assettitle;
 
     $scope.asset = {};
+    $scope.project = {};
+    $scope.isUserAdmin = false;
+    $scope.currentUser = {};
 
     var init = function() {
       $scope.getAssetFunc();
+      getProjectFunc();
     }
 
     $scope.getAssetFunc = function() {
@@ -39,6 +43,59 @@ angular.module('collaborateApp')
       });        
     }
 
+    var getProjectFunc = function() {
+      getProjects.getProject($scope.projectId)
+      .then(function(res){
+        // success
+        $scope.project = getProjects.project;
+        console.log($scope.project);
+        $scope.getCurrentUserFunc();
+      }, function(){
+        // error  
+      });     
+    }
+
+    $scope.getCurrentUserFunc = function() {
+      session.getCurrentUser()
+      .then(function(res){
+        // success
+        $scope.currentUser = session.currentUser;
+        $scope.isUserAdminOfProject();
+      }, function(){
+        // error  
+      });
+    }
+
+
+    $scope.isUserAdminOfProject = function() {
+      console.log("Is user admin method before loop");
+      for(var i = 0; i < $scope.project.owners.length; i++) {
+        console.log("En loop.");
+        if($scope.currentUser.id == $scope.project.owners[i].id) {
+          console.log("Hittade som admin");
+          $scope.isUserAdmin = true;
+        }
+      }
+    }
+
+    $scope.addCommentToAssetFunc = function() {
+      addCommentToAsset.addCommentToAsset($scope.projectId, $scope.assetContainerId, $scope.assetId, $scope.assetComment);
+      ngDialog.close();
+    }
+
+    $scope.approveAssetFunc = function() {
+      approveAsset.approveAsset($scope.projectId, $scope.assetContainerId, $scope.assetId);  
+      ngDialog.close();    
+    }
+
+    // DIALOG FUNCTIONS
+    $scope.addCommentToAssetDialog = function () {
+        ngDialog.open({ template: 'views/dialogs/addcommenttoassetdialog.html', controller: 'AssetviewCtrl' });
+    };
+
+    $scope.approveAssetDialog = function () {
+        ngDialog.open({ template: 'views/dialogs/approveassetdialog.html', controller: 'AssetviewCtrl' });
+    };
 
     init();
 

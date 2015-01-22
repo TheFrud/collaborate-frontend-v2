@@ -2,39 +2,26 @@
 <a ng-href="#/project/{{projectId}}/{{projectTitle}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}"><b>Asset Container:{{assetContainer.title}}</b></a>
 <hr>
 
-<h3>{{assetContainerTitle}}</h3>
+<h3>{{assetContainer.title}}</h3>
+<button ng-click="addAssetDialog()" type="button" class="btn btn-success">Add Asset</button>
+
+<!-- Visa endast ifall user är owner-->
+<div style="display: inline-block;" ng-show="isUserAdmin">
+<button ng-click="markAssetContainerAsCompletedDialog()" type="button" class="btn btn-success">Mark as completed</button>
+</div>
 
 <div class="well well-lg">
   <div ta-bind ng-model="assetContainer.description">{{assetContainer.description}} </div>
 </div>
 <hr>
-<i ng-click="isCollapsed = !isCollapsed" class="fa fa-plus-square"></i> 
-<div collapse="!isCollapsed">
-<form ng-submit="createAssetFunc()" role="form">
-  <legend>Add Asset</legend>
-
-  <div class="form-group">
-    <label for="">Name</label>
-    <input ng-model="assetName" type="text" class="form-control" id="" placeholder="Name your asset">
-
-    <label for="">Link to asset</label>
-	  <input ng-model="assetUrl" type="url" class="form-control" id="" placeholder="Link to your asset">
-
-    <label for="">Description</label>
-    <textarea ng-model="assetDescription" class="form-control" rows="5" placeholder="Describe your asset"></textarea>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
-
 <h4>Uploaded Assets</h4>
 <div class="row">
   <div ng-repeat="asset in assetContainer.assets" class="col-md-2">
   <h4>
   <a ng-href="#/project/{{projectId}}/{{projectTitle}}/assetcontainer/{{assetContainerId}}/{{assetContainer.title}}/asset/{{asset.id}}/{{asset.title}}">{{asset.title}}</a>
   </h4>
-  {{asset.description}}
+  <i>{{asset.creationDate | date:'medium'}}</i><br>
+  <i>by <a ng-href="#/profile/{{asset.user.id}}/{{asset.user.username}}">{{asset.user.username}}</a></i><br>
   </div>
   <!--
 	<div class="media">

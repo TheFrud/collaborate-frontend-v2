@@ -8,7 +8,7 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('ProfileCtrl', function ($scope, session) {
+  .controller('ProfileCtrl', function ($scope, session, getUsers, $routeParams) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -18,21 +18,33 @@ angular.module('collaborateApp')
     // Inititalization
     $scope.init = function() {
     	// Metoden
-    	$scope.getCurrentUserFunc();
+    	// $scope.getCurrentUserFunc();
+      $scope.getUserFunc();
+
     }
 
 	$scope.currentUser = {};
+  $scope.userId = $routeParams.profileid;
 
-    $scope.getCurrentUserFunc = function() {
-    	session.getCurrentUser()
-   		.then(function(res){
-   			// success
-   			$scope.currentUser = session.currentUser;
+  $scope.getUserFunc = function() {
+    getUsers.getUser($scope.userId)
+    .then(function(res){
+      // success
+      $scope.currentUser = getUsers.user;
+    }, function(){
+      // error  
+    });    
+  }  
 
-   		}, function(){
-   			// error	
-   		});
-    }
+  $scope.getCurrentUserFunc = function() {
+    session.getCurrentUser()
+   	.then(function(res){
+   		// success
+   		$scope.currentUser = session.currentUser;
+   	}, function(){
+   		// error	
+   	});
+  }
 
     $scope.init();     
 
