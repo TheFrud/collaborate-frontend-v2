@@ -3,11 +3,12 @@
 <hr>
 
 <h3>{{assetContainer.title}}</h3>
-<button ng-click="addAssetDialog()" type="button" class="btn btn-success">Add Asset</button>
+<button ng-click="addAssetDialog()" type="button" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Add Asset</button>
 
 <!-- Visa endast ifall user är owner-->
 <div style="display: inline-block;" ng-show="isUserAdmin">
-<button ng-click="markAssetContainerAsCompletedDialog()" type="button" class="btn btn-success">Mark as completed</button>
+<button ng-click="markAssetContainerAsCompletedDialog()" type="button" class="btn btn-success"><i class="fa fa-check-square-o"></i>&nbsp;Mark as completed
+</button>
 </div>
 
 <div class="well well-lg">

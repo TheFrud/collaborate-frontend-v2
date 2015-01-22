@@ -4,7 +4,7 @@
 <h3>{{asset.title}}</h3>
 <i>{{asset.creationDate | date:'medium'}}</i><br>
 <i>by <a ng-href="#/profile/{{asset.user.id}}/{{asset.user.username}}">{{asset.user.username}}</a></i><br>
-<button ng-click="addCommentToAssetDialog()" type="button" class="btn btn-success">Add Comment</button>
+<button ng-click="addCommentToAssetDialog()" type="button" class="btn btn-success"><i class="fa fa-comment"></i>&nbsp;Post Comment</button>
 
 <!-- Visa bara om user är admin-->
 <div style="display: inline-block;" ng-show="isUserAdmin">

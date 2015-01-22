@@ -20,13 +20,24 @@
 
 // BRA SVART (inte helsvart liksom): #161616
 
+// $btn-default-color:              #FFFFFF !default;
+// $btn-default-bg:                 #15B8FF !default;
+// $btn-default-border:             #15B8FF !default;
+
+// $btn-primary-color:              #FFFFFF !default;
+// $btn-primary-bg:                 #15B8FF !default;
+// $btn-primary-border:             #15B8FF !default;
+
 $btn-default-color:              #FFFFFF !default;
-$btn-default-bg:                 #15B8FF !default;
-$btn-default-border:             #15B8FF !default;
+$btn-default-bg:                 #559DC6 !default;
+$btn-default-border:             #559DC6 !default;
 
 $btn-primary-color:              #FFFFFF !default;
-$btn-primary-bg:                 #15B8FF !default;
-$btn-primary-border:             #15B8FF !default;
+$btn-primary-bg:                 #559DC6 !default;
+$btn-primary-border:             #559DC6 !default;
+
+// #559DC6
+// 0E74AF
 
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
@@ -61,6 +72,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
              0 20px 20px rgba(0,0,0,.15);             
 */
 
+.brand-logo {
+  padding: 0.3em;
+}
+
 .fa-spinner{
   // color: white;
   font-size: 0.1em
@@ -75,7 +90,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 .fa-question-circle{
-  color: #15B8FF;
+  //color: #15B8FF;
+  color: #559DC6;
 
 }
 
@@ -86,7 +102,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .fa-plus-square{
   font-size: 2em;
   // color: #591C61
-  color: #15B8FF;
+  //color: #15B8FF;
+  color: #559DC6;
 }
 
 .fa-spinner {
@@ -96,11 +113,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .fa-user {
   font-size: 20em;
   // color: #591C61
-  color: #15B8FF;
+  //color: #15B8FF;
+  color: #559DC6;
 }
 .fa-folder {
   // color: #591C61
-  color: #15B8FF;
+  //color: #15B8FF;
+  color: #559DC6;
 }
 .fa-star {
   // color: #FFD700
@@ -128,7 +147,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 .navbar {
   //background-color: #210538;
-  background-color: #0087CC;
+  //background-color: #0087CC;
+  background-color: #0E74AF;
 
 }
 .browsehappy {
