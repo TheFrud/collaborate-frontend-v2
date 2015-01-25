@@ -8,12 +8,25 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('ProjectviewCtrl', function ($scope, $routeParams, $cookies, getProjects, createAssetContainer) {
+  .controller('ProjectviewCtrl', function ($scope, $routeParams, $cookies, $interval, ngDialog, getProjects, createAssetContainer, addCommentToProject) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    // Polling
+    var poller = $interval(function() {
+      getProjectFunc();
+    }, 5000)
+
+    // Destroy Poller at Route Change
+    $scope.$on("$destroy", function() {
+          if (poller) {
+              $interval.cancel(poller);
+          }
+    });
+
 
     // Inititalization
     $scope.init = function() {
@@ -46,6 +59,16 @@ angular.module('collaborateApp')
    			// error	
    		});    	
     }
+
+    $scope.addCommentToProjectFunc = function() {
+      addCommentToProject.addCommentToProject($scope.project.id, $scope.projectComment);
+      ngDialog.close();
+    }
+
+    // DIALOG FUNCTIONS
+    $scope.addCommentToProjectDialog = function () {
+        ngDialog.open({ template: 'views/dialogs/addcommenttoprojectdialog.html', controller: 'ProjectviewCtrl' });
+    };
 
 
 

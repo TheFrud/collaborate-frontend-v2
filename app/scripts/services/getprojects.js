@@ -17,6 +17,8 @@ angular.module('collaborateApp')
     service.userProjects = [];
     service.project = null;
 
+    
+
     service.getProjectWhereUserIsOwner = function() {
       var defer = $q.defer();
       $http.get('http://localhost:8085/projects/getuserprojects').
@@ -45,7 +47,7 @@ angular.module('collaborateApp')
         success(function(data, status, headers, config) {
           // this callback will be called asynchronously
           // when the response is available
-          console.log("Gick bra att hämta projektet");
+          // console.log("Gick bra att hämta projektet");
           service.project = data;
           defer.resolve(data);
 
@@ -53,7 +55,7 @@ angular.module('collaborateApp')
         error(function(data, status, headers, config) {
           // called asynchronously if an error occurs
           // or server returns response with an error status.
-          console.log("Gick inte att hämta projektet");
+          // console.log("Gick inte att hämta projektet");
           defer.reject();
 
         });      

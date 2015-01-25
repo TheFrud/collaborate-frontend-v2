@@ -8,7 +8,7 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('CreateprojectCtrl', function ($scope, $http, createProject) {
+  .controller('CreateprojectCtrl', function ($scope, $http, $location, createProject) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -30,9 +30,14 @@ angular.module('collaborateApp')
 
     // Metod: createProject
     $scope.createProject = function() {
-    	console.log('Create Project Method Activated');
-      createProject.createProject($scope.projectTitle, $scope.projectDescription, $scope.projectTags, $scope.projectSecurityPolicy);
-      console.log($scope.projectDescription);
+      createProject.createProject($scope.projectTitle, $scope.projectDescription, $scope.projectTags, $scope.projectSecurityPolicy)
+      .then(function(res){
+        // success
+        $location.path("/main");
+
+      }, function(){
+        // error  
+      });      
     };
 
     

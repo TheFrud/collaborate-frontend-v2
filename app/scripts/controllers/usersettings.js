@@ -8,7 +8,7 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('UsersettingsCtrl', function ($scope, session) {
+  .controller('UsersettingsCtrl', function ($scope, $location, session) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -36,8 +36,14 @@ angular.module('collaborateApp')
     }
 
     $scope.editUserFunc = function() {
-    	console.log("dsada");
-    	session.editUser($scope.currentUser.bio);
+    	session.editUser($scope.currentUser.bio)
+      .then(function(res){
+        // success
+        $location.path("/profile/" + $scope.currentUser.id + "/" + $scope.currentUser.username);
+      }, function(){
+        // error  
+      });       
+      
     }
 
     $scope.toggleEditBio = function() {

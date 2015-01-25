@@ -8,7 +8,7 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('ProfileCtrl', function ($scope, session, getUsers, $routeParams) {
+  .controller('ProfileCtrl', function ($scope, $routeParams, session, getUsers) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

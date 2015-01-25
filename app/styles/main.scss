@@ -72,8 +72,59 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
              0 20px 20px rgba(0,0,0,.15);             
 */
 
+/*
+.fa-cog{
+  font-size: 5em;
+  color: #559DC6;
+}
+*/
+
+.project-view-header {
+  background-color: #0E74AF;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+}
+
+.project-item{
+  background-color: #0E74AF;
+  color: white;
+  .fa-check {
+    display: inline;
+  }
+  
+  a{
+    // font-color: white;
+    color: white;
+  }
+  .completed-asset {
+    display: inline;
+    // color: green;
+  }
+  .needed-asset {
+    display: inline;
+    // color: yellow;
+  }
+  .number-of-comments {
+    display: inline;
+  }
+}
+
+#loading-bar .bar{
+  height: 3px;
+}
+
+#loading-bar .peg{
+  height: 3px;
+}
+
 .brand-logo {
   padding: 0.3em;
+}
+
+.fa-circle-o-notch {
+  font-size: 1.5em;
+  opacity: 0.6;
 }
 
 .fa-spinner{
@@ -149,6 +200,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   //background-color: #210538;
   //background-color: #0087CC;
   background-color: #0E74AF;
+  margin-bottom: 8px;
 
 }
 .browsehappy {

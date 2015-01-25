@@ -27,7 +27,8 @@ var app = angular
     'textAngular',
     'xeditable',
     'ngDialog',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular-loading-bar'
   ])
   .config(['$httpProvider', function($httpProvider) {
   // $httpProvider.defaults.withCredentials = true;

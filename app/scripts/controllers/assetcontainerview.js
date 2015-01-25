@@ -8,7 +8,7 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('AssetcontainerviewCtrl', function ($scope, $routeParams, getAssetContainer, createAsset, ngDialog, getProjects, session, markAssetContainerAsCompleted) {
+  .controller('AssetcontainerviewCtrl', function ($scope, $routeParams, getAssetContainer, createAsset, ngDialog, getProjects, session, markAssetContainerAsCompleted, addCommentToAssetContainer) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -105,6 +105,19 @@ angular.module('collaborateApp')
       ngDialog.close();    
     }    
 
+    $scope.addCommentToAssetContainerFunc = function() {
+      addCommentToAssetContainer.addCommentToAssetContainer($scope.projectId, $scope.assetContainerId, $scope.assetContainerComment)
+      .then(function(res){
+        // success
+        ngDialog.close();
+
+      }, function(){
+        // error  
+      });       
+      
+    }
+
+
     // DIALOG FUNCTIONS
    $scope.addAssetDialog = function() {
       ngDialog.open({template: 'views/dialogs/addassetdialog.html', controller: 'AssetcontainerviewCtrl'});
@@ -113,6 +126,10 @@ angular.module('collaborateApp')
     $scope.markAssetContainerAsCompletedDialog = function () {
         ngDialog.open({ template: 'views/dialogs/markassetcontainerascompleted.html', controller: 'AssetcontainerviewCtrl' });
     };
+
+    $scope.addCommentToAssetContainerDialog = function() {
+        ngDialog.open({ template: 'views/dialogs/addcommenttoassetcontainerdialog.html', controller: 'AssetcontainerviewCtrl' });
+    }
 
     $scope.init();
   });

@@ -3,14 +3,14 @@
 
   <div class="form-group">
     <label for="">Name</label>
-    <input ng-model="assetContainerName" type="text" class="form-control" id="" placeholder="Input field">
+    <input ng-model="assetContainerName" type="text" class="form-control" id="" placeholder="Choose a fitting name for your asset...">
     <label for="">Description</label>
-    <div text-angular ng-model="assetContainerDescription"></div>
+    <div text-angular ng-model="assetContainerDescription" placeholder="Describe the asset as well as you can..."></div>
     <label for="">Category</label>
     <select ng-init="projectAssetContainerCategory = assetContainerCategoryOptions[0]" ng-options="option for option in assetContainerCategoryOptions" ng-model="projectAssetContainerCategory" name="" id="input" class="form-control">
 
 	</select>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Add</button>
 </form>

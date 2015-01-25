@@ -6,20 +6,42 @@
   <h2>Latest projects</h2>
   <input ng-model="latestProjectsSearchText" type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Search Project">
   <br>
+  <!--<i class="fa fa-circle-o-notch fa-spin" data-loading></i>-->
   <ul class="list-group">
-    <li ng-repeat="project in projects | filter:latestProjectsSearchText | orderBy: '-creationDate'" class="list-group-item fx-fade-down fx-easing-bounce">
-    {{project.creationDate | date:'medium'}} - 
-    <strong><a ng-href="#/project/{{project.id}}/{{project.title}}">
-    <i class="fa fa-folder"></i> {{project.title}} 
-    </strong></a>
-    <br>
-      | {{project.assetContainers.length}} | {{project.assetContainers.length}} | 
-    <br>
-    <div style="display:inline-block" ng-repeat="tag in project.tags"><span class="label label-warning">{{tag.text}}</span><!-- For one empty space-->&nbsp;</div>
+    <li ng-repeat="project in projects | filter : { securityPolicy : 'Open' } | filter:latestProjectsSearchText | orderBy: '-creationDate'" class="list-group-item project-item">       <!-- FX| fx-fade-down fx-easing-bounce -->
+    <div class="row">
+      <div class="col-md-4">
+        {{project.creationDate | date:'medium'}}
+      </div> 
+      <div class="col-md-6">
+        
+        <strong><a ng-href="#/project/{{project.id}}/{{project.title}}">
+        <i class="fa fa-folder"></i> {{project.title}} 
+        </a></strong>
+      </div>
+      <div class="col-md-2">
+        <!-- Empty row -->
+        {{project.securityPolicy}}&nbsp;<i class="fa fa-unlock-alt"></i>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+          <div class="needed-asset"><i class="fa fa-upload"></i> {{(project.assetContainers | filter: {status: 'Needed'}).length}} </div>
+        </div>
+        <div class="col-md-1">
+          <div class="completed-asset"><i class="fa fa-check"></i> {{(project.assetContainers | filter: {status: 'Completed'}).length}} </div>
+        </div>
+        <div class="col-md-1">
+          <div class="number-of-comments"><i class="fa fa-comment"></i> {{project.comments.length}} </div>
+        </div>
+        <div class="col-md-9">
+          <!-- Empty row -->
+        </div>
+    </div>
+        <div style="display:inline-block" ng-repeat="tag in project.tags"><span class="label label-warning">{{tag.text}}</span><!-- For one empty space-->&nbsp;</div>
+    </div>
     </li>
   </ul>
-  </div>
-
 
   <div class="col-md-4">
   <h2>Popular projects</h2>
@@ -34,12 +56,12 @@
   <input ng-model="assetsSearchText" type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Search Asset">
  <!-- <input type="checkbox" ng-click="includeColour('Sprite')"/> Sprite-(Inte implementerat)</br/> -->
   <br>
-
+  <!-- <i class="fa fa-circle-o-notch fa-spin" data-loading></i> -->
   
   <div ng-repeat="project in projects">
   <a ng-href="#/project/{{project.id}}/{{project.title}}">{{project.title}}</a>
         <ul class="list-group">
-        <li class="list-group-item fx-fade-down fx-easing-bounce" ng-repeat="assetcontainer in project.assetContainers | filter:assetsSearchText | orderBy: '-creationDate'"><a ng-href="#/project/{{project.id}}/{{project.title}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}">{{assetcontainer.title}}</a>
+        <li class="list-group-item" ng-repeat="assetcontainer in project.assetContainers | filter:assetsSearchText | orderBy: '-creationDate'"><a ng-href="#/project/{{project.id}}/{{project.title}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}">{{assetcontainer.title}}</a>
         </li>
         </ul>
   </div>

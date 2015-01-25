@@ -8,25 +8,66 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('ProjectviewadminCtrl', function ($scope, $routeParams, $location, ngDialog, createAssetContainer, getProjects, removeProject, updateProjectDescription, getUsers, addUserToProject) {
+  .controller('ProjectviewadminCtrl', function ($scope, $routeParams, $location, $interval, $timeout, ngDialog, createAssetContainer, getProjects, removeProject, updateProjectDescription, getUsers, addUserToProject, updateCollaborationPolicy) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-  $scope.init = function() {
-      getProject();
-      $scope.getUsersFunc();
+  // Polling
+  var poller = $interval(function() {
+    getProjectFunc();
+    getUsersFunc();
+  }, 5000)
+
+  // Destroy Poller at Route Change
+  $scope.$on("$destroy", function() {
+        if (poller) {
+            $interval.cancel(poller);
+        }
+  });  
+
+  //
+
+  var init = function() {
+      getProjectFunc();
+      getUsersFunc();
   }
 	$scope.id = $routeParams.projectid;
 	$scope.project = {};
   $scope.users = [];
+      
+  $scope.securityPolicyOptions =
+  [
+      "Open",
+      "Closed"
+  ]; 
+
+  /*
+  $interval(function() {
+    getProjectFunc();
+  }, 3000)
+
+  timeout(function() {
+    getProjectFunc();
+  }, 3000)  
+  */
+
+  var getProjectFunc = function() {
+      getProjects.getProject($scope.id)
+      .then(function(res){
+        // success
+        $scope.project = getProjects.project;
+      }, function(){
+        // error  
+      });     
+    }
 
   $scope.addOwnerToProject = function() {
     addUserToProject.addOwnerToProject($scope.selected, $scope.project.id)
     .then(function(){
-      getProject();
+      $scope.init();
       ngDialog.close();
     }, function() {
       ngDialog.close();
@@ -40,7 +81,7 @@ angular.module('collaborateApp')
         "Music"
   ]; 
 
-  $scope.getUsersFunc = function() {
+  var getUsersFunc = function() {
     getUsers.getUsers()
     .then(function(){
       $scope.users = getUsers.users;
@@ -50,9 +91,16 @@ angular.module('collaborateApp')
   }
 
   $scope.createAssetContainerFunc = function() {
-      createAssetContainer.createAssetContainer($scope.id, $scope.assetContainerName, $scope.assetContainerDescription, $scope.projectAssetContainerCategory);
-      console.log("Försökte skapa asset container");
-      ngDialog.close();
+      createAssetContainer.createAssetContainer($scope.id, $scope.assetContainerName, $scope.assetContainerDescription, $scope.projectAssetContainerCategory)
+      .then(function(res){
+        // success
+        $scope.init();
+        ngDialog.close();    
+
+      }, function(){
+        // error  
+      });     
+
   }    
 
   $scope.removeProjectFunc = function() {
@@ -62,28 +110,20 @@ angular.module('collaborateApp')
       $location.path("/main");
     }, function() {
       ngDialog.close();
-      console.log("Gick inte att ta bort projektet.");
       $location.path("/main");
     });
 
   }
 
   $scope.updateProjectDescriptionFunc = function() {
-    console.log("dsadsa");
     updateProjectDescription.updateProjectDescription($scope.project.id, $scope.project.description);
   }
 
-  var getProject = function() {
-      getProjects.getProject($scope.id)
-      .then(function(res){
-        // success
-        $scope.project = getProjects.project;
-        console.log($scope.project);
+  $scope.updateCollaborationPolicyFunc = function() {
+    updateCollaborationPolicy.updateCollaborationPolicy($scope.project.id, $scope.projectSecurityPolicy);
+  }
 
-      }, function(){
-        // error  
-      });     
-    }
+
 
     // DIALOG FUNCTIONS
   $scope.removeProjectDialog = function () {
@@ -96,9 +136,13 @@ angular.module('collaborateApp')
 
   $scope.addOwnerToProjectDialog = function() {
       ngDialog.open({template: 'views/dialogs/addprojectownerdialog.html', controller: 'ProjectviewadminCtrl'});
+  }  
+
+  $scope.updateCollaborationPolicyDialog = function() {
+      ngDialog.open({template: 'views/dialogs/updatecollaborationpolicydialog.html', controller: 'ProjectviewadminCtrl'});
   }
 
-    $scope.init();   
+  init();   
 
   });
 

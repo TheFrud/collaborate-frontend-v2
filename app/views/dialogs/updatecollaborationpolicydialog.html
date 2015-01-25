@@ -1,0 +1,9 @@
+<form ng-submit="updateCollaborationPolicyFunc()" role="form">
+	<div class="form-group">
+		<label for="">Collaboration Policy</label>
+		Initialvärde ska såklart vara det som är just nu. <br>
+		<select ng-init="projectSecurityPolicy = securityPolicyOptions[0]" ng-options="option for option in securityPolicyOptions" ng-model="projectSecurityPolicy" name="" id="input" class="form-control">
+		</select>
+	</div>
+	<button type="submit" class="btn btn-success">Update</button>
+</form>

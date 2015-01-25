@@ -3,11 +3,11 @@
 
 	<div class="form-group">
 		<label for="">Project Name</label>
-		<input ng-model="projectTitle" type="text" class="form-control" id="" placeholder="">
+		<input ng-model="projectTitle" type="text" class="form-control" id="" placeholder="Choose a fitting name for your project...">
 		<label for="">Description</label>
-		<div text-angular ng-model="projectDescription"></div>
+		<div text-angular ng-model="projectDescription" placeholder="Describe your project as well as you can. Include your vision, eventual references, and so on. Make contributors interested in getting involved. This is your chance go get peoples attention..."></div>
 		<label for="">Tags</label>
-	    <tags-input ng-model="projectTags"></tags-input>
+	    <tags-input ng-model="projectTags" placeholder="Add tags. Make it easy for contributors to find your project..."></tags-input>
 		<label for="">Collaboration Policy</label>
 		<select ng-init="projectSecurityPolicy = securityPolicyOptions[0]" ng-options="option for option in securityPolicyOptions" ng-model="projectSecurityPolicy" name="" id="input" class="form-control">
 		</select>

@@ -8,12 +8,26 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('MainCtrl', function ($scope, getProjects, getAssets, getAssetContainer) {
+  .controller('MainCtrl', function ($scope, $interval, getProjects, getAssets, getAssetContainer) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    // Polling
+    var poller = $interval(function() {
+      getProjectsFunc();
+      getAssetContainersFunc();
+    }, 15000)
+
+    // Destroy Poller at Route Change
+    $scope.$on("$destroy", function() {
+          if (poller) {
+              $interval.cancel(poller);
+          }
+    }); 
+
 
     // Inititalization
     $scope.init = function() {
