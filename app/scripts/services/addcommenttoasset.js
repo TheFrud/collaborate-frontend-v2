@@ -17,12 +17,12 @@ angular.module('collaborateApp')
     service.addCommentToAsset = function(projectId, assetContainerId, assetId, assetComment) {
       $http.post('http://localhost:8085/addcommenttoasset', 
         {withCredentials: true, projectId: projectId, assetContainerId: assetContainerId, assetId: assetId, assetComment: assetComment })
-      .success(function(response) {
+      .success(function() {
         console.log('Gick bra att lägga till kommentar till asset.');
-      }).error(function(response) {
+      }).error(function() {
         console.log('Gick skit att lägga till kommentar till asset.');
       });       
-    }
+    };
 
 
     return service;

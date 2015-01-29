@@ -19,10 +19,10 @@ angular.module('collaborateApp')
   var poller = $interval(function() {
     getProjectFunc();
     getUsersFunc();
-  }, 5000)
+  }, 5000);
 
   // Destroy Poller at Route Change
-  $scope.$on("$destroy", function() {
+  $scope.$on('$destroy', function() {
         if (poller) {
             $interval.cancel(poller);
         }
@@ -33,15 +33,16 @@ angular.module('collaborateApp')
   var init = function() {
       getProjectFunc();
       getUsersFunc();
-  }
+  };
+
 	$scope.id = $routeParams.projectid;
 	$scope.project = {};
   $scope.users = [];
       
   $scope.securityPolicyOptions =
   [
-      "Open",
-      "Closed"
+      'Open',
+      'Closed'
   ]; 
 
   /*
@@ -56,13 +57,13 @@ angular.module('collaborateApp')
 
   var getProjectFunc = function() {
       getProjects.getProject($scope.id)
-      .then(function(res){
+      .then(function(){
         // success
         $scope.project = getProjects.project;
       }, function(){
         // error  
       });     
-    }
+    };
 
   $scope.addOwnerToProject = function() {
     addUserToProject.addOwnerToProject($scope.selected, $scope.project.id)
@@ -72,13 +73,13 @@ angular.module('collaborateApp')
     }, function() {
       ngDialog.close();
     });    
-  }
+  };
 
   $scope.assetContainerCategoryOptions =
     [
-        "Sprite",
-        "Sound effect",
-        "Music"
+        'Sprite',
+        'Sound effect',
+        'Music'
   ]; 
 
   var getUsersFunc = function() {
@@ -88,40 +89,39 @@ angular.module('collaborateApp')
     }, function() {
 
     });    
-  }
+  };
 
   $scope.createAssetContainerFunc = function() {
       createAssetContainer.createAssetContainer($scope.id, $scope.assetContainerName, $scope.assetContainerDescription, $scope.projectAssetContainerCategory)
-      .then(function(res){
+      .then(function(){
         // success
-        $scope.init();
         ngDialog.close();    
 
       }, function(){
         // error  
       });     
 
-  }    
+  };    
 
   $scope.removeProjectFunc = function() {
     removeProject.removeProject($scope.project.id)
     .then(function(){
       ngDialog.close();
-      $location.path("/main");
+      $location.path('/main');
     }, function() {
       ngDialog.close();
-      $location.path("/main");
+      $location.path('/main');
     });
 
-  }
+  };
 
   $scope.updateProjectDescriptionFunc = function() {
     updateProjectDescription.updateProjectDescription($scope.project.id, $scope.project.description);
-  }
+  };
 
   $scope.updateCollaborationPolicyFunc = function() {
     updateCollaborationPolicy.updateCollaborationPolicy($scope.project.id, $scope.projectSecurityPolicy);
-  }
+  };
 
 
 
@@ -132,15 +132,15 @@ angular.module('collaborateApp')
 
   $scope.addAssetContainerDialog = function() {
       ngDialog.open({template: 'views/dialogs/addassetcontainerdialog.html', controller: 'ProjectviewadminCtrl'});
-  }    
+  };   
 
   $scope.addOwnerToProjectDialog = function() {
       ngDialog.open({template: 'views/dialogs/addprojectownerdialog.html', controller: 'ProjectviewadminCtrl'});
-  }  
+  };  
 
   $scope.updateCollaborationPolicyDialog = function() {
       ngDialog.open({template: 'views/dialogs/updatecollaborationpolicydialog.html', controller: 'ProjectviewadminCtrl'});
-  }
+  };
 
   init();   
 

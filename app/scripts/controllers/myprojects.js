@@ -19,13 +19,13 @@ angular.module('collaborateApp')
     $scope.init = function() {
     	// Metoden
     	$scope.getProjectWhereUserIsOwner();
-    }
+    };
 
     $scope.userProjects = [];
 
     $scope.getProjectWhereUserIsOwner = function() {
     	getProjects.getProjectWhereUserIsOwner()
-   		.then(function(res){
+   		.then(function(){
    			// success
    			$scope.userProjects = getProjects.userProjects;
 
@@ -33,7 +33,7 @@ angular.module('collaborateApp')
    		}, function(){
    			// error	
    		});
-    }
+    };
 
     $scope.init(); 
   });

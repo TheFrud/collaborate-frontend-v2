@@ -17,12 +17,12 @@ angular.module('collaborateApp')
     service.addCommentToProject = function(projectId, projectComment) {
       $http.post('http://localhost:8085/project/add/comment', 
         {withCredentials: true, projectId: projectId, projectComment: projectComment})
-      .success(function(response) {
+      .success(function() {
         console.log('Gick bra att lägga till kommentar till projekt.');
-      }).error(function(response) {
+      }).error(function() {
         console.log('Gick skit att lägga till kommentar till projekt.');
       });       
-    }
+    };
 
 
     return service;

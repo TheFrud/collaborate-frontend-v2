@@ -17,12 +17,12 @@ angular.module('collaborateApp')
     service.createAsset = function(projectId, assetContainerId, assetName, assetDescription, assetUrl) {
       $http.post('http://localhost:8085/asset/create', 
         {withCredentials: true, projectId: projectId, assetContainerId: assetContainerId, assetName: assetName, assetDescription: assetDescription, assetUrl: assetUrl })
-      .success(function(response) {
+      .success(function() {
         console.log('Gick bra att skapa asset');
-      }).error(function(response) {
+      }).error(function() {
         console.log('Gick skit att skapa asset');
       });     
-    }
+    };
 
     return service;
 

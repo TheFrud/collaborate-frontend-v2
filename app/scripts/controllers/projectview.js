@@ -18,10 +18,10 @@ angular.module('collaborateApp')
     // Polling
     var poller = $interval(function() {
       getProjectFunc();
-    }, 5000)
+    }, 5000);
 
     // Destroy Poller at Route Change
-    $scope.$on("$destroy", function() {
+    $scope.$on('$destroy', function() {
           if (poller) {
               $interval.cancel(poller);
           }
@@ -31,10 +31,10 @@ angular.module('collaborateApp')
     // Inititalization
     $scope.init = function() {
     	getProjectFunc();
-    }
+    };
 
     $scope.id = $routeParams.id;
-    $scope.project;
+    $scope.project = {};
     $scope.userId = $cookies.currentUserId;
     $scope.isUserAdmin = false;
     console.log($cookies.currentUserId);
@@ -46,11 +46,11 @@ angular.module('collaborateApp')
           $scope.isUserAdmin = true;
         }
       }
-    }
+    };
 
     var getProjectFunc = function() {
     	getProjects.getProject($scope.id)
-   		.then(function(res){
+   		.then(function(){
    			// success
    			$scope.project = getProjects.project;
    			console.log($scope.project);
@@ -58,12 +58,12 @@ angular.module('collaborateApp')
    		}, function(){
    			// error	
    		});    	
-    }
+    };
 
     $scope.addCommentToProjectFunc = function() {
       addCommentToProject.addCommentToProject($scope.project.id, $scope.projectComment);
       ngDialog.close();
-    }
+    };
 
     // DIALOG FUNCTIONS
     $scope.addCommentToProjectDialog = function () {

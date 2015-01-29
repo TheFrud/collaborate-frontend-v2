@@ -18,15 +18,15 @@ angular.module('collaborateApp')
       var defer = $q.defer();
       $http.post('http://localhost:8085/addownertoproject', 
         {withCredentials: true, userEmail: userEmail, projectId: projectId})
-      .success(function(response) {
+      .success(function() {
         defer.resolve();
         console.log('Gick bra att lägga till användare till projekt (som ägare)');
-      }).error(function(response) {
+      }).error(function() {
         defer.reject();
         console.log('Gick skit att lägga till användare till projekt (som ägare)');
       });    
       return defer.promise;   
-    }
+    };
 
     return service;
 

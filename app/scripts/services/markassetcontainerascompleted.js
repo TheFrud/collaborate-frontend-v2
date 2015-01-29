@@ -17,12 +17,12 @@ angular.module('collaborateApp')
     service.markAssetContainerAsCompleted = function(projectId, assetContainerId) {
      $http.post('http://localhost:8085/assetcontainer/markascompleted', 
         {withCredentials: true, projectId: projectId, assetContainerId: assetContainerId})
-      .success(function(response) {
+      .success(function() {
         console.log('Gick bra att godkänna asset');
-      }).error(function(response) {
+      }).error(function() {
         console.log('Gick skit att godkänna asset');
       });        
-    }
+    };
 
     return service;
 

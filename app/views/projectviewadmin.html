@@ -1,10 +1,13 @@
+<a ng-href="#/">Main</a>&nbsp;|&nbsp;<a ng-href="#/project/{{project.id}}/{{project.title}}"><b>Project:{{project.title}}</b></a>
+&nbsp;|&nbsp;<a ng-href="#/project/{{project.id}}/{{project.title}}/admin"><b>Administration</b></a>
+<hr>
 <div class="row">
   <div class="col-md-6">
     <h3>{{project.title}}</h3>
-    <button ng-click="removeProjectDialog()" type="button" class="btn btn-danger">Remove Project</button>
-    <button ng-click="updateCollaborationPolicyDialog()" type="button" class="btn btn-warning">Collaboration Policy</button>
-    <button ng-click="addAssetContainerDialog()" type="button" class="btn btn-success">Add Asset Container</button>
-    <button ng-click="addOwnerToProjectDialog()" type="button" class="btn btn-success">Add Owner</button>
+    <button ng-click="removeProjectDialog()" type="button" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>&nbsp;Remove Project</button>
+    <button ng-click="updateCollaborationPolicyDialog()" type="button" class="btn btn-warning"><i class="fa fa-users"></i>&nbsp;Collaboration Policy</button>
+    <button ng-click="addAssetContainerDialog()" type="button" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Add Asset Container</button>
+    <button ng-click="addOwnerToProjectDialog()" type="button" class="btn btn-success"><i class="fa fa-user-plus"></i>&nbsp;Add Owner</button>
     <div text-angular ng-model="project.description"></div>
     <button ng-click="updateProjectDescriptionFunc()" type="button" class="btn btn-warning">Update description</button>
     <br>
@@ -14,7 +17,7 @@
     <div class="col-md-4">
       <h3>Activities</h3>
       <ul>
-        <li ng-repeat="activity in project.activities">
+        <li ng-repeat="activity in project.activities | orderBy: '-creationDate'">
         {{activity.creationDate | date:'medium'}}:<br><i>{{activity.message}}</i>
         </li>
       </ul>

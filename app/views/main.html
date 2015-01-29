@@ -6,9 +6,19 @@
   <h2>Latest projects</h2>
   <input ng-model="latestProjectsSearchText" type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Search Project">
   <br>
+
+    <!-- Pagination -->
+   <button class="btn btn-info" ng-disabled="currentPageProjects == 0" ng-click="currentPageProjects=currentPageProjects-1">
+        Previous
+    </button>
+    {{currentPageProjects+1}}/{{numberOfPagesProjects()}}
+    <button class="btn btn-info" ng-disabled="currentPageProjects >= projects.length/pageSizeProjects - 1" ng-click="currentPageProjects=currentPageProjects+1">
+        Next
+    </button>
+
   <!--<i class="fa fa-circle-o-notch fa-spin" data-loading></i>-->
   <ul class="list-group">
-    <li ng-repeat="project in projects | filter : { securityPolicy : 'Open' } | filter:latestProjectsSearchText | orderBy: '-creationDate'" class="list-group-item project-item">       <!-- FX| fx-fade-down fx-easing-bounce -->
+    <li ng-repeat="project in projects | filter : { securityPolicy : 'Open' } | filter:latestProjectsSearchText | orderBy: '-creationDate' | startFrom:currentPageProjects*pageSizeProjects | limitTo:pageSizeProjects" class="list-group-item project-item">       <!-- FX| fx-fade-down fx-easing-bounce -->
     <div class="row">
       <div class="col-md-4">
         {{project.creationDate | date:'medium'}}
@@ -39,9 +49,12 @@
         </div>
     </div>
         <div style="display:inline-block" ng-repeat="tag in project.tags"><span class="label label-warning">{{tag.text}}</span><!-- For one empty space-->&nbsp;</div>
-    </div>
     </li>
   </ul>
+  </div>
+   
+
+   
 
   <div class="col-md-4">
   <h2>Popular projects</h2>
@@ -57,11 +70,49 @@
  <!-- <input type="checkbox" ng-click="includeColour('Sprite')"/> Sprite-(Inte implementerat)</br/> -->
   <br>
   <!-- <i class="fa fa-circle-o-notch fa-spin" data-loading></i> -->
-  
+
+  <!-- Pagination -->
+ <button class="btn btn-info" ng-disabled="currentPageAssetContainers == 0" ng-click="currentPageAssetContainers=currentPageAssetContainers-1">
+      Previous
+  </button>
+  {{currentPageAssetContainers+1}}/{{numberOfPagesAssetContainers()}}
+  <button class="btn btn-info" ng-disabled="currentPageAssetContainers >= totalNumberOfAssetContainers.length/pageSizeAssetContainers - 1" ng-click="currentPageAssetContainers=currentPageAssetContainers+1">
+      Next
+  </button>
+
   <div ng-repeat="project in projects">
-  <a ng-href="#/project/{{project.id}}/{{project.title}}">{{project.title}}</a>
         <ul class="list-group">
-        <li class="list-group-item" ng-repeat="assetcontainer in project.assetContainers | filter:assetsSearchText | orderBy: '-creationDate'"><a ng-href="#/project/{{project.id}}/{{project.title}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}">{{assetcontainer.title}}</a>
+        <li class="list-group-item assetcontainer-item" ng-repeat="assetcontainer in project.assetContainers | filter:assetsSearchText | orderBy: '-creationDate' | startFrom:currentPageAssetContainers*pageSizeAssetContainers | limitTo:pageSizeAssetContainers">
+        <div class="row">
+          <div class="col-md-4">
+            {{assetcontainer.creationDate | date:'medium'}}
+          </div> 
+          <div class="col-md-6">
+          <a ng-href="#/project/{{project.id}}/{{project.title}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}">{{assetcontainer.title}}</a>
+          </div>  
+          <div class="col-md-2">
+            <div ng-if="assetcontainer.category == 'Sprite'">
+              <i class="asset-type-icon fa fa-picture-o"></i>
+            </div>
+            <div ng-if="assetcontainer.category == 'Sound effect'">
+              <i class="asset-type-icon fa fa-file-audio-o"></i>
+            </div>
+            <div ng-if="assetcontainer.category == 'Music'">
+              <i class="asset-type-icon fa fa-music"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-md-1">
+          <div class="uploaded-assets"><i class="fa fa-upload"></i> {{assetcontainer.assets.length}} </div>
+        </div>
+        <div class="col-md-1">
+          <div class="number-of-comments"><i class="fa fa-comment"></i> {{assetcontainer.comments.length}} </div>
+        </div>
+        <div class="col-md-10">
+          <!-- Empty row -->
+        </div>
+    </div>
         </li>
         </ul>
   </div>

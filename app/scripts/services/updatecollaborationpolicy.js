@@ -18,15 +18,15 @@ angular.module('collaborateApp')
       var defer = $q.defer();
       $http.post('http://localhost:8085/project/update/collaborationpolicy', 
         {withCredentials: true, projectId: projectId, projectSecurityPolicy: projectSecurityPolicy})
-      .success(function(response) {
+      .success(function() {
         defer.resolve();
         console.log('Gick bra att ändra collaboration policy');
-      }).error(function(response) {
+      }).error(function() {
         defer.reject();
         console.log('Gick skit att ändra collaboration policy');
       });    
       return defer.promise;   
-    }
+    };
 
 
     return service;

@@ -20,7 +20,7 @@ angular.module('collaborateApp')
         console.log(response.data.authToken);
         console.log(response.data.USER);
         session.login(response.data.authToken, response.data.USER);
-        $location.path("/");
+        $location.path('/');
       });
 
     };
@@ -34,8 +34,8 @@ angular.module('collaborateApp')
 
 /*
         console.log(response.data.authToken);
-        $cookieStore.put("AUTH_TOKEN", response.data.authToken);
-        var favoriteCookie = $cookieStore.get("AUTH_TOKEN");
+        $cookieStore.put('AUTH_TOKEN', response.data.authToken);
+        var favoriteCookie = $cookieStore.get('AUTH_TOKEN');
         console.log(favoriteCookie);
         $http.defaults.headers.common['X-AUTH-TOKEN'] = response.data.authToken;
         */

@@ -39,11 +39,14 @@ $btn-primary-border:             #559DC6 !default;
 // #559DC6
 // 0E74AF
 
+
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$fa-font-path: "/bower_components/fontawesome/fonts/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
-
+// @import "fontawesome/scss/font-awesome.scss";
 /*
   text-shadow: 0 1px 0 #0087CC,
              0 2px 0 #0087CC,
@@ -79,6 +82,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 */
 
+
+.asset-type-icon {
+  font-size: 1.5em;
+}
+
 .project-view-header {
   background-color: #0E74AF;
   border-radius: 5px;
@@ -102,6 +110,24 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     // color: green;
   }
   .needed-asset {
+    display: inline;
+    // color: yellow;
+  }
+  .number-of-comments {
+    display: inline;
+  }
+}
+
+
+.assetcontainer-item{
+  background-color: #0E74AF;
+  color: white;
+
+  a{
+    // font-color: white;
+    color: white;
+  }
+  .uploaded-assets {
     display: inline;
     // color: yellow;
   }

@@ -18,15 +18,15 @@ angular.module('collaborateApp')
       var defer = $q.defer();
       $http.post('http://localhost:8085/assetcontainer/add/comment', 
         {withCredentials: true, projectId: projectId, assetContainerId: assetContainerId, assetContainerComment: assetContainerComment })
-      .success(function(response) {
+      .success(function() {
         defer.resolve();
         console.log('Gick bra att lägga till kommentar till asset container.');
-      }).error(function(response) {
+      }).error(function() {
         defer.reject();
         console.log('Gick skit att lägga till kommentar till asset container.');
       });  
       return defer.promise;     
-    }
+    };
 
 
     return service;

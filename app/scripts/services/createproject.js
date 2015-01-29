@@ -18,10 +18,10 @@ angular.module('collaborateApp')
       var defer = $q.defer();
       $http.post('http://localhost:8085/project/create', 
         {withCredentials: true, projectTitle: projectTitle, projectDescription: projectDescription, projectTags: projectTags, projectSecurityPolicy: projectSecurityPolicy})
-      .success(function(response) {
+      .success(function() {
         defer.resolve();
         console.log('Gick bra');
-      }).error(function(response) {
+      }).error(function() {
         defer.reject();
         console.log('Gick skit');
       });

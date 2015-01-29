@@ -22,9 +22,9 @@ angular.module('collaborateApp')
     };
 
     $scope.getUserAssetsFunc = function() {
-      console.log("dasd");
+      console.log('dasd');
       getAssets.getUserAssets()
-      .then(function(res){
+      .then(function(){
         // success
         $scope.userAssets = getAssets.userAssets;
         console.log($scope.userAssets);
@@ -33,7 +33,7 @@ angular.module('collaborateApp')
       }, function(){
         // error  
       });
-    }
+    };
 
     init();    
   });

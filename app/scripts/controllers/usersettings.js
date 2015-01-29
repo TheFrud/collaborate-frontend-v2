@@ -19,41 +19,41 @@ angular.module('collaborateApp')
     $scope.init = function() {
     	// Metoden
     	$scope.getCurrentUserFunc();
-    }
+    };
 
 	$scope.currentUser = {};
 	$scope.editBio = true;
 
     $scope.getCurrentUserFunc = function() {
     	session.getCurrentUser()
-   		.then(function(res){
+   		.then(function(){
    			// success
    			$scope.currentUser = session.currentUser;
 
    		}, function(){
    			// error	
    		});
-    }
+    };
 
     $scope.editUserFunc = function() {
     	session.editUser($scope.currentUser.bio)
-      .then(function(res){
+      .then(function(){
         // success
-        $location.path("/profile/" + $scope.currentUser.id + "/" + $scope.currentUser.username);
+        $location.path('/profile/' + $scope.currentUser.id + '/' + $scope.currentUser.username);
       }, function(){
         // error  
       });       
       
-    }
+    };
 
     $scope.toggleEditBio = function() {
-      if($scope.editBio == false) {
+      if($scope.editBio === false) {
         $scope.editBio = true;
       }
       else {
         $scope.editBio = false;
       }
-    }
+    };
 
     $scope.init();  	
   });

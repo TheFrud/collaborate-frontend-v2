@@ -18,15 +18,15 @@ angular.module('collaborateApp')
       var defer = $q.defer();
       $http.post('http://localhost:8085/project/remove', 
         {withCredentials: true, projectId: projectId})
-      .success(function(response) {
+      .success(function() {
         console.log('Gick bra att ta bort projekt');
         defer.resolve();
-      }).error(function(response) {
+      }).error(function() {
         console.log('Gick skit att ta bort projekt');
         defer.reject();
       });  
       return defer.promise;       
-    }
+    };
 
     return service;
 

@@ -14,7 +14,7 @@
 // NU KOLLAR JAG JU BARA COOKIEN. KAN JU MODIFIERAS...
 
 
-var app = angular
+angular
   .module('collaborateApp', [
     'ngAnimate',
     'ngCookies',
@@ -30,11 +30,12 @@ var app = angular
     'ui.bootstrap',
     'angular-loading-bar'
   ])
+  /*
   .config(['$httpProvider', function($httpProvider) {
   // $httpProvider.defaults.withCredentials = true;
   }])
-  .config(function ($routeProvider, $httpProvider) {
-    // $httpProvider.defaults.withCredentials = true;
+  */
+  .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -96,6 +97,10 @@ var app = angular
         resolve:{
           authorize:function(session) {
             return session.cookieExist();
+          },
+          isUserAdmin: function($route, session) {
+            var projectId = $route.current.params.projectid;
+            return session.isUserAdminOfProject(projectId);
           }
         }        
       })      

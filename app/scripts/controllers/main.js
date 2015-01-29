@@ -8,7 +8,7 @@
  * Controller of the collaborateApp
  */
 angular.module('collaborateApp')
-  .controller('MainCtrl', function ($scope, $interval, getProjects, getAssets, getAssetContainer) {
+  .controller('MainCtrl', function ($scope, $log, $interval, getProjects, getAssets, getAssetContainer) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -19,10 +19,10 @@ angular.module('collaborateApp')
     var poller = $interval(function() {
       getProjectsFunc();
       getAssetContainersFunc();
-    }, 15000)
+    }, 15000);
 
     // Destroy Poller at Route Change
-    $scope.$on("$destroy", function() {
+    $scope.$on('$destroy', function() {
           if (poller) {
               $interval.cancel(poller);
           }
@@ -33,44 +33,63 @@ angular.module('collaborateApp')
     $scope.init = function() {
     	getProjectsFunc();
       getAssetContainersFunc();
-    }
+    };
 
     // Inititalization end
 
     $scope.projects = [];
-    // $scope.assetContainers = [];
-    $scope.totalItems = 100;
-    $scope.currentPage = 1;
-    $scope.maxSize = 2;
-    $scope.bigTotalItems = 175;
-    $scope.bigCurrentPage = 1;
+    $scope.totalNumberOfAssetContainers = 0;
+
+    // Pagination stuff
+    $scope.currentPageProjects = 0;
+    $scope.pageSizeProjects = 4;
+
+    $scope.currentPageAssetContainers = 0;
+    $scope.pageSizeAssetContainers = 2;
 
 
-    $scope.setPage = function (pageNo) {
-      $scope.currentPage = pageNo;
-    };
+    $scope.numberOfPagesProjects=function(){
+        return Math.ceil($scope.projects.length/$scope.pageSizeProjects);                
+    }
 
-    $scope.pageChanged = function() {
-      $log.log('Page changed to: ' + $scope.currentPage);
-    };
+    $scope.numberOfPagesAssetContainers=function(){
+        return Math.ceil($scope.totalNumberOfAssetContainers/$scope.pageSizeAssetContainers);                
+    }
+
+
+    // Pagination stuff ENDS
+
+    var totalNumberOfAssetContainersFunc = function(projects) {
+      
+      var numAssetContainers = 0;
+
+      for(var i = 0; i < projects.length; i++) {
+
+        for(var j = 0; j < projects[i].assetContainers.length; j++) {
+          numAssetContainers += 1;
+        }
+
+      }
+
+      $scope.totalNumberOfAssetContainers = numAssetContainers;
+    }
 
     var getProjectsFunc = function() {
-    	getProjects.getProjects()
-   		.then(function(res){
+    	getProjects.getOpenProjects()
+   		.then(function(){
    			// success
-   			$scope.projects = getProjects.projects;
-        // $scope.totalItems = $scope.projects.length;
-        console.log($scope.totalItems);
-        console.log($scope.projects);
+   			$scope.projects = getProjects.openProjects;
+        totalNumberOfAssetContainersFunc($scope.projects);
+        console.log($scope.totalNumberOfAssetContainers);
 
    		}, function(){
    			// error	
    		});
-    }
+    };
 
     var getAssetContainersFunc = function() {
       getAssetContainer.getAssetContainers()
-      .then(function(res){
+      .then(function(){
         // success
         $scope.assetContainers = getAssetContainer.assetContainers;
 
@@ -78,7 +97,7 @@ angular.module('collaborateApp')
       }, function(){
         // error  
       });
-    }
+    };
 
     $scope.init(); 
   });

@@ -17,12 +17,12 @@ angular.module('collaborateApp')
     service.approveAsset = function(projectId, assetContainerId, assetId) {
      $http.post('http://localhost:8085/asset/approve', 
         {withCredentials: true, projectId: projectId, assetContainerId: assetContainerId, assetId: assetId })
-      .success(function(response) {
+      .success(function() {
         console.log('Gick bra att godkänna asset');
-      }).error(function(response) {
+      }).error(function() {
         console.log('Gick skit att godkänna asset');
       });       
-    }
+    };
 
 
     return service;

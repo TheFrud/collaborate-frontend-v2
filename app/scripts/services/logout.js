@@ -15,9 +15,9 @@ angular.module('collaborateApp')
     var service = {};
 
     service.logout = function() {
-      $http.post('http://localhost:8085/logout').then(function(response) {
+      $http.post('http://localhost:8085/logout').then(function() {
         session.logout();
-        $location.path("/landingpage");
+        $location.path('/landingpage');
       });
 
     };    

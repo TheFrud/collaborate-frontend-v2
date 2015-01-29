@@ -20,8 +20,8 @@ angular.module('collaborateApp')
 
     $scope.securityPolicyOptions =
     [
-        "Open",
-        "Closed"
+        'Open',
+        'Closed'
     ]; 
 
     $scope.loadTags = function(query) {
@@ -31,9 +31,9 @@ angular.module('collaborateApp')
     // Metod: createProject
     $scope.createProject = function() {
       createProject.createProject($scope.projectTitle, $scope.projectDescription, $scope.projectTags, $scope.projectSecurityPolicy)
-      .then(function(res){
+      .then(function(){
         // success
-        $location.path("/main");
+        $location.path('/main');
 
       }, function(){
         // error  

@@ -17,9 +17,9 @@ angular.module('collaborateApp')
     service.updateProjectDescription = function(projectId, projectDescription) {
       $http.post('http://localhost:8085/project/description/update', 
         {withCredentials: true, projectId: projectId, projectDescription: projectDescription})
-      .success(function(response) {
+      .success(function() {
         console.log('Gick bra');
-      }).error(function(response) {
+      }).error(function() {
         console.log('Gick skit');
       });
     };

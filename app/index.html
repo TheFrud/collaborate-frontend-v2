@@ -42,6 +42,7 @@
             </ul>
           </div>
         </ul>
+        
         <ul class="nav nav-pills pull-right">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -50,7 +51,7 @@
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#/profile/{{currentUserId}}/{{currentUser}}">Profile</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/user/settings">Settings</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#/user/settings"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#/myprojects">Projects</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#/myassets">Assets</a></li>
               <li ng-click="logoutFunc()" role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-sign-out"></i>&nbsp;Logout</a></li>
@@ -161,6 +162,7 @@
         <script src="scripts/services/updatecollaborationpolicy.js"></script>
         <script src="scripts/services/addcommenttoproject.js"></script>
         <script src="scripts/services/addcommenttoassetcontainer.js"></script>
+        <script src="scripts/filters/startfrom.js"></script>
         <!-- endbuild -->
 </body>
 </html>

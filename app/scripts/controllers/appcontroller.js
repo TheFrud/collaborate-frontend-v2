@@ -30,15 +30,15 @@ angular.module('collaborateApp')
 
     $rootScope.$on('$routeChangeError', function() {
       // console.log("Routeändring gick åt helvete");
-      $location.path("/landingpage");
-    })
+      $location.path('/landingpage');
+    });
     $rootScope.$on('$routeChangeSuccess', function() {
       // console.log("Routeändring lyckades");
-    })    
+    });    
 
     $scope.logoutFunc = function() {
       logout.logout();
-    }
+    };
     
    session.cookieExist();
   
