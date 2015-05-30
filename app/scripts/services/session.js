@@ -92,6 +92,7 @@ angular.module('collaborateApp')
       if(typeof cookie === 'undefined'){
         console.log('Cookie is undefined.');
         deferred.resolve('Cookie is undefined yo.');
+        $location.path('/landingpage');
       }
       else if(cookie.length === 36) {
         $http.defaults.headers.common['X-AUTH-TOKEN'] = $cookies.authToken;

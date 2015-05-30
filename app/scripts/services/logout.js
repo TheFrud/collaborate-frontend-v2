@@ -17,6 +17,7 @@ angular.module('collaborateApp')
     service.logout = function() {
       $http.post('http://localhost:8085/logout').then(function() {
         session.logout();
+        console.log('testtesttest');
         $location.path('/landingpage');
       });
 
