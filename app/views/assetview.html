@@ -1,0 +1,24 @@
+<a ng-href="#/">Main</a>&nbsp;|&nbsp;<a ng-href="#/project/{{projectId}}/{{projectTitle}}">Project:{{projectTitle}}</a>&nbsp;|&nbsp;
+<a ng-href="#/project/{{projectId}}/{{projectTitle}}/assetcontainer/{{assetContainerId}}/{{assetContainerTitle}}">Asset Container:{{assetContainerTitle}}</a>&nbsp;|&nbsp;<a ng-href="#/project/{{projectId}}/{{projectTitle}}/assetcontainer/{{assetContainerId}}/{{assetContainerTitle}}/asset/{{assetId}}/{{assetTitle}}"><b>Asset:{{assetTitle}}</b></a>
+<hr>
+<h3>{{asset.title}}</h3>
+<i>{{asset.creationDate | date:'medium'}}</i><br>
+<i>by <a ng-href="#/profile/{{asset.user.id}}/{{asset.user.username}}">{{asset.user.username}}</a></i><br>
+<button ng-click="addCommentToAssetDialog()" type="button" class="btn btn-success"><i class="fa fa-comment"></i>&nbsp;Post Comment</button>
+
+<!-- Visa bara om user är admin-->
+<div style="display: inline-block;" ng-show="isUserAdmin">
+	<button ng-click="approveAssetDialog()" type="button" class="btn btn-success">Approve</button>	
+</div>
+
+<div class="well well-lg">
+<div ta-bind ng-model="asset.description"></div>
+</div>
+<p><a ng-href="{{asset.link}}">(Ha en tydlig ikon för resources) Link to resource</a></p>
+<hr>
+<h4>Comments</h4>
+<div ng-repeat="comment in asset.comments">
+<b><a ng-href="#/profile/{{comment.user.id}}/{{comment.user.username}}">{{comment.user.username}}</a></b><br>
+{{comment.creationDate| date:'medium'}}
+<div ta-bind ng-model="comment.text"></div>
+</div>

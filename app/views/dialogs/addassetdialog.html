@@ -1,0 +1,17 @@
+<form ng-submit="createAssetFunc()" role="form">
+  <legend>Add Asset</legend>
+
+  <div class="form-group">
+    <label for="">Name</label>
+    <input ng-model="assetName" type="text" class="form-control" id="" placeholder="Name your asset">
+
+    <label for="">Link to asset</label>
+    <input ng-model="assetUrl" type="url" class="form-control" id="" placeholder="Link to your asset">
+
+    <label for="">Description</label>
+    <div text-angular ng-model="assetDescription" placeholder="Describe your asset, add relevant links and so on..."></div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

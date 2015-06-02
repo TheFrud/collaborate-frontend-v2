@@ -1,0 +1,59 @@
+<a ng-href="#/">Main</a>&nbsp;|&nbsp;<a ng-href="#/project/{{project.id}}/{{project.title}}"><b>Project:{{project.title}}</b></a>
+&nbsp;|&nbsp;<a ng-href="#/project/{{project.id}}/{{project.title}}/admin"><b>Administration</b></a>
+<hr>
+<div class="row">
+  <div class="col-md-6">
+    <h3>{{project.title}}</h3>
+    <button ng-click="removeProjectDialog()" type="button" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>&nbsp;Remove Project</button>
+    <button ng-click="updateCollaborationPolicyDialog()" type="button" class="btn btn-warning"><i class="fa fa-users"></i>&nbsp;Collaboration Policy</button>
+    <button ng-click="addAssetContainerDialog()" type="button" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Add Asset Container</button>
+    <button ng-click="addOwnerToProjectDialog()" type="button" class="btn btn-success"><i class="fa fa-user-plus"></i>&nbsp;Add Owner</button>
+    <div text-angular ng-model="project.description"></div>
+    <button ng-click="updateProjectDescriptionFunc()" type="button" class="btn btn-warning">Update description</button>
+    <br>
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+    <div class="col-md-4">
+      <h3>Activities</h3>
+      <ul>
+        <li ng-repeat="activity in project.activities | orderBy: '-creationDate'">
+        {{activity.creationDate | date:'medium'}}:<br><i>{{activity.message}}</i>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+     <h3>Assets</h3>
+     <h4>Needed assets</h4>
+      <ul>
+        <li ng-repeat="assetcontainer in project.assetContainers | filter : { status : 'needed' }">
+          <a ng-href="#project/{{project.id}}/{{project.id}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}">{{assetcontainer.title}}</a>
+            <ul>
+            <li ng-repeat="asset in assetcontainer.assets">
+              <a ng-href="#project/{{project.id}}/{{project.id}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}/asset/{{asset.id}}/{{asset.title}}">{{asset.title}}</a>
+            </li>
+            </ul>
+        </li>
+      </ul>
+      <h4>Completed assets</h4>
+      <ul>
+        <li ng-repeat="assetcontainer in project.assetContainers | filter : { status : 'completed' }">
+          <a ng-href="#project/{{project.id}}/{{project.id}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}">{{assetcontainer.title}}</a>
+            <ul>
+            <li ng-repeat="asset in assetcontainer.assets">
+              <a ng-href="#project/{{project.id}}/{{project.id}}/assetcontainer/{{assetcontainer.id}}/{{assetcontainer.title}}/asset/{{asset.id}}/{{asset.title}}">{{asset.title}}</a>
+            </li>
+            </ul>
+        </li>
+      </ul>          
+    </div>
+    <div class="col-md-4">
+      <h3>Owners</h3>
+      <ul>
+        <li ng-repeat="owner in project.owners">
+        <a ng-href="#/profile/{{owner.id}}/{{owner.username}}">{{owner.username}}
+        </li>
+      </ul>      
+    </div>
+  </div>
+</div>

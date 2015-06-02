@@ -1,0 +1,53 @@
+<a ng-href="#/">Main</a>&nbsp;|&nbsp;<a ng-href="#/project/{{projectId}}/{{projectTitle}}">Project:{{projectTitle}}</a>&nbsp;|&nbsp;
+<a ng-href="#/project/{{projectId}}/{{projectTitle}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}"><b>Asset Container:{{assetContainer.title}}</b></a>
+<hr>
+
+<h3>{{assetContainer.title}}</h3>
+<button ng-click="addAssetDialog()" type="button" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Add Asset</button>
+
+<!-- Visa endast ifall user är owner-->
+<div style="display: inline-block;" ng-show="isUserAdmin">
+<button ng-click="markAssetContainerAsCompletedDialog()" type="button" class="btn btn-success"><i class="fa fa-check-square-o"></i>&nbsp;Mark as completed
+</button>
+<button ng-click="addCommentToAssetContainerDialog()" type="button" class="btn btn-success"><i class="fa fa-comment"></i>&nbsp;Post Comment</button>
+</div>
+
+<div class="well well-lg">
+  <div ta-bind ng-model="assetContainer.description">{{assetContainer.description}} </div>
+</div>
+<hr>
+<h4>Uploaded Assets</h4>
+<div class="row">
+  <div ng-repeat="asset in assetContainer.assets" class="col-md-2">
+  <h4>
+  <a ng-href="#/project/{{projectId}}/{{projectTitle}}/assetcontainer/{{assetContainerId}}/{{assetContainer.title}}/asset/{{asset.id}}/{{asset.title}}">{{asset.title}}</a>
+  </h4>
+  <i>{{asset.creationDate | date:'medium'}}</i><br>
+  <i>by <a ng-href="#/profile/{{asset.user.id}}/{{asset.user.username}}">{{asset.user.username}}</a></i><br>
+  </div>
+</div>
+<h4>Comments</h4>
+<div ng-repeat="comment in assetContainer.comments">
+<b><a ng-href="#/profile/{{comment.user.id}}/{{comment.user.username}}">{{comment.user.username}}</a></b><br>
+{{comment.creationDate| date:'medium'}}
+<div ta-bind ng-model="comment.text"></div>
+</div>
+
+
+
+
+
+
+
+
+  <!--
+	<div class="media">
+	  <a class="media-left" href="#">
+	  <img src="..." alt="...">
+	  </a>
+	  <div class="media-body">
+	  <h4 class="media-heading">Asset</h4>
+	    Text om asset Text om asset Text om asset Text om asset Text om asset Text om asset Text om asset Text om asset
+	</div>
+  -->
+  

@@ -1,0 +1,322 @@
+//import "bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss";
+
+// LILA THEME
+//$btn-default-color:              #FFFFFF !default;
+//$btn-default-bg:                 #591C61 !default;
+//$btn-default-border:             #591C61 !default;
+
+//$btn-primary-color:              #FFFFFF !default;
+//$btn-primary-bg:                 #591C61 !default;
+//$btn-primary-border:             #591C61 !default;
+
+// BLÅTT THEME
+//$btn-default-color:              #FFFFFF !default;
+//$btn-default-bg:                 #15B8FF !default;
+//$btn-default-border:             #15B8FF !default;
+
+//$btn-primary-color:              #FFFFFF !default;
+//$btn-primary-bg:                 #15B8FF !default;
+//$btn-primary-border:             #15B8FF !default;
+
+// BRA SVART (inte helsvart liksom): #161616
+
+// $btn-default-color:              #FFFFFF !default;
+// $btn-default-bg:                 #15B8FF !default;
+// $btn-default-border:             #15B8FF !default;
+
+// $btn-primary-color:              #FFFFFF !default;
+// $btn-primary-bg:                 #15B8FF !default;
+// $btn-primary-border:             #15B8FF !default;
+
+$btn-default-color:              #FFFFFF !default;
+$btn-default-bg:                 #559DC6 !default;
+$btn-default-border:             #559DC6 !default;
+
+$btn-primary-color:              #FFFFFF !default;
+$btn-primary-bg:                 #559DC6 !default;
+$btn-primary-border:             #559DC6 !default;
+
+// #559DC6
+// 0E74AF
+
+
+
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$fa-font-path: "/bower_components/fontawesome/fonts/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+// @import "fontawesome/scss/font-awesome.scss";
+/*
+  text-shadow: 0 1px 0 #0087CC,
+             0 2px 0 #0087CC,
+             0 3px 0 #0087CC,
+             0 4px 0 #0087CC,
+             0 5px 0 #222222,
+             0 6px 1px rgba(0,0,0,.1),
+             0 0 5px rgba(0,0,0,.1),
+             0 1px 3px rgba(0,0,0,.3),
+             0 3px 5px rgba(0,0,0,.2),
+             0 5px 10px rgba(0,0,0,.25),
+             0 10px 10px rgba(0,0,0,.2),
+             0 20px 20px rgba(0,0,0,.15);
+
+  text-shadow: 0 1px 0 #0087CC,
+             0 2px 0 #222222,
+             0 3px 0 #222222,
+             0 4px 0 #222222,
+             0 5px 0 #222222,
+             0 6px 1px rgba(0,0,0,.1),
+             0 0 5px rgba(0,0,0,.1),
+             0 1px 3px rgba(0,0,0,.3),
+             0 3px 5px rgba(0,0,0,.2),
+             0 5px 10px rgba(0,0,0,.25),
+             0 10px 10px rgba(0,0,0,.2),
+             0 20px 20px rgba(0,0,0,.15);             
+*/
+
+/*
+.fa-cog{
+  font-size: 5em;
+  color: #559DC6;
+}
+*/
+
+
+.asset-type-icon {
+  font-size: 1.5em;
+}
+
+.project-view-header {
+  background-color: #0E74AF;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+}
+
+.project-item{
+  background-color: #0E74AF;
+  color: white;
+  .fa-check {
+    display: inline;
+  }
+  
+  a{
+    // font-color: white;
+    color: white;
+  }
+  .completed-asset {
+    display: inline;
+    // color: green;
+  }
+  .needed-asset {
+    display: inline;
+    // color: yellow;
+  }
+  .number-of-comments {
+    display: inline;
+  }
+}
+
+
+.assetcontainer-item{
+  background-color: #0E74AF;
+  color: white;
+
+  a{
+    // font-color: white;
+    color: white;
+  }
+  .uploaded-assets {
+    display: inline;
+    // color: yellow;
+  }
+  .number-of-comments {
+    display: inline;
+  }
+}
+
+#loading-bar .bar{
+  height: 3px;
+}
+
+#loading-bar .peg{
+  height: 3px;
+}
+
+.brand-logo {
+  padding: 0.3em;
+}
+
+.fa-circle-o-notch {
+  font-size: 1.5em;
+  opacity: 0.6;
+}
+
+.fa-spinner{
+  // color: white;
+  font-size: 0.1em
+}
+
+.side-panel {
+  background-color: #0087CC;
+}
+
+.landing-page-title{
+  //
+}
+
+.fa-question-circle{
+  //color: #15B8FF;
+  color: #559DC6;
+
+}
+
+.rating-text{
+  color: #F1C904;
+}
+
+.fa-plus-square{
+  font-size: 2em;
+  // color: #591C61
+  //color: #15B8FF;
+  color: #559DC6;
+}
+
+.fa-spinner {
+  font-size: 2em;
+}
+
+.fa-user {
+  font-size: 20em;
+  // color: #591C61
+  //color: #15B8FF;
+  color: #559DC6;
+}
+.fa-folder {
+  // color: #591C61
+  //color: #15B8FF;
+  color: #559DC6;
+}
+.fa-star {
+  // color: #FFD700
+  //text-shadow: 3px 3px 3px #ccc;
+  text-shadow: 0 1px 0 #F1C904,
+               0 2px 0 #F1C904,
+               0 3px 0 #F1C904,
+               0 4px 0 #F1C904,
+               0 5px 0 #F1C904,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+  font-size: 1.8em;
+  color: #FEF102;
+}
+
+.btn {
+    border-radius: 0px;
+
+}
+
+.navbar {
+  //background-color: #210538;
+  //background-color: #0087CC;
+  background-color: #0E74AF;
+  margin-bottom: 8px;
+
+}
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+body {
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+
+  /* Make the masthead heading the same height as the navigation */
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+  }
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+
+  .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+  }
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+
+  p + h4 {
+    margin-top: 28px;
+  }
+}
+
+html {
+  overflow-y: scroll;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}

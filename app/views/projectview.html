@@ -1,0 +1,72 @@
+<!-- Header -->
+<!-- <div class="project-view-header"> -->
+<a ng-href="#/">Main</a>&nbsp;|&nbsp;<a ng-href="#/project/{{project.id}}/{{project.title}}"><b>Project:{{project.title}}</b></a>
+<hr>
+<h3>{{project.title}}</h3>
+<i>Created: {{project.creationDate | date:'medium'}} </i><br>
+<i>
+<div style="display:inline-block" ng-repeat="tag in project.tags"><span class="label label-warning">{{tag.text}}</span><!-- For one empty space-->&nbsp;</div>
+</i>
+<a href="#/project/{{project.id}}/{{project.title}}/admin">
+<div ng-show="isUserAdmin">
+<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Admin View
+</div>
+</a>
+<button ng-click="addCommentToProjectDialog()" type="button" class="btn btn-success"><i class="fa fa-comment"></i>&nbsp;Post Comment</button>
+<hr>
+<!-- -->
+
+
+
+<div class="well well-lg">
+<div ta-bind ng-model="project.description"></div>
+</div>
+
+
+<h4>Needed assets</h4>
+<div class="row">
+  <div ng-repeat="assetContainer in project.assetContainers | filter : { status : 'needed' }" class="col-md-2">
+  <ul class="list-group">
+  	<li class="list-group-item">
+  <a ng-href="#/project/{{project.id}}/{{project.title}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
+  	<br>
+    {{assetContainer.category}}
+    <br>
+    Contributions: {{assetContainer.assets.length}}
+    </li>
+  </ul>
+  </div>
+  <!--
+	<div class="media">
+	  <a class="media-left" href="#">
+	  <img src="..." alt="...">
+	  </a>
+	  <div class="media-body">
+	  <h4 class="media-heading">Asset</h4>
+	    Text om asset Text om asset Text om asset Text om asset Text om asset Text om asset Text om asset Text om asset
+	</div>
+  -->
+  
+</div>
+
+<h4>Completed assets</h4>
+<div class="row">
+  <div ng-repeat="assetContainer in project.assetContainers | filter : { status : 'completed' }" class="col-md-2">
+  <ul class="list-group">
+  	<li class="list-group-item">
+  <a ng-href="#/project/{{project.id}}/{{project.title}}/assetcontainer/{{assetContainer.id}}/{{assetContainer.title}}">{{assetContainer.title}}</a>
+    <br>
+    {{assetContainer.category}}
+    <br>
+    Contributions: {{assetContainer.assets.length}}
+  	</li>
+  </ul>
+  </div>
+</div>
+
+<h4>Comments</h4>
+<div ng-repeat="comment in project.comments">
+<b><a ng-href="#/profile/{{comment.user.id}}/{{comment.user.username}}">{{comment.user.username}}</a></b><br>
+{{comment.creationDate| date:'medium'}}
+<div ta-bind ng-model="comment.text"></div>
+</div>
